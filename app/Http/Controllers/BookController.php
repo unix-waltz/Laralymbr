@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     public function index(){
-        return view('index');
+        return view('User.index');
     }
+    public function Bookdetail(){
+        return view('User.detailbook');
+    }
+public function contact(){
+    return view('User.contact');
+}
 }
