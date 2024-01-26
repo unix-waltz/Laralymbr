@@ -15,6 +15,11 @@ class useAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        if(Auth()->user()->ROLE == 'ADMIN'){
+            return $next($request);
+        }else{
+            return redirect('/401'); 
+        }
+       
     }
 }

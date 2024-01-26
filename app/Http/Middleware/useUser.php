@@ -15,6 +15,11 @@ class useUser
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        if(Auth()->user()->ROLE == 'USER'){
+            return $next($request);
+        }else{
+            return redirect('/401'); 
+        }
+       
     }
 }

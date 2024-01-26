@@ -15,6 +15,11 @@ class useOfficer
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        if(Auth()->user()->ROLE == 'OFFICER'){
+            return $next($request);
+        }else{
+            return redirect('/401'); 
+        }
+       
     }
 }

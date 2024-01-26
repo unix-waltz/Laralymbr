@@ -17,7 +17,7 @@ use App\Http\Controllers\BookController;
 Route::get('/home',function(){
 return 'ini home';
 });
-Route::get('/product/book/detail/{id}',[BookController::class,'Bookdetail'])->middleware('auth');
+Route::get('/product/book/detail/{id}',[BookController::class,'Bookdetail'])->middleware('auth')->middleware('useUser');
 Route::get('/logout',[AuthController::class,'logout'])->middleware('auth');
 Route::get('/',[BookController::class,'index'])->middleware('auth');
 Route::get('/register',[AuthController::class,'index'])->middleware('guest');
