@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/logout',[AuthController::class,'logout']);
+Route::get('/',[BookController::class,'index'])->middleware('auth');
+Route::get('/register',[AuthController::class,'index']);
+Route::post('/register',[AuthController::class,'register']);
+Route::get('/login',[AuthController::class,'LoginView'])->name('login');
+Route::post('/login',[AuthController::class,'Login']);
