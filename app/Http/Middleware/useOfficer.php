@@ -17,9 +17,11 @@ class useOfficer
     {
         if(Auth()->user()->ROLE == 'OFFICER'){
             return $next($request);
-        }else{
-            return redirect('/401'); 
+        };
+        if(Auth()->user()->ROLE == 'ADMIN'){
+            return redirect('/admin/dashboard');
         }
+        return redirect('/401'); 
        
     }
 }

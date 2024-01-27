@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BookController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,17 +18,29 @@ use App\Http\Controllers\BookController;
 Route::get('/home',function(){
 return 'ini home';
 });
-Route::get('/product/book/detail/{id}',[BookController::class,'Bookdetail'])->middleware('auth')->middleware('useUser');
+
+// authorization routes
 Route::get('/logout',[AuthController::class,'logout'])->middleware('auth');
-Route::get('/',[BookController::class,'index'])->middleware('auth');
 Route::get('/register',[AuthController::class,'index'])->middleware('guest');
 Route::post('/register',[AuthController::class,'register']);
 Route::get('/login',[AuthController::class,'LoginView'])->middleware('guest')->name('login');
 Route::post('/login',[AuthController::class,'Login']);
-Route::get('/contact',[BookController::class,'contact'])->middleware('auth');
 
 
+Route::middleware(['auth', 'useRole:USER'])->group(function () {
+    Route::get('/contact',[UserController::class,'contact'])->middleware('auth');
+    Route::get('/',[UserController::class,'index'])->middleware('auth');
+    Route::get('/product/book/detail/{id}',[UserController::class,'Bookdetail'])->middleware('auth');
+});
 
+Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
+    Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->middleware('auth');
+    
+});
+
+Route::middleware(['auth', 'useRole:OFFICER'])->group(function () {
+    Route::get('/petugas/dashboard', 'PetugasController@dashboard');
+});
 
 
 Route::fallback(function(){

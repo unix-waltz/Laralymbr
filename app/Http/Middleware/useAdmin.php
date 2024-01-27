@@ -17,9 +17,8 @@ class useAdmin
     {
         if(Auth()->user()->ROLE == 'ADMIN'){
             return $next($request);
-        }else{
-            return redirect('/401'); 
-        }
+        };
        
+        return redirect('/401'); 
     }
 }
