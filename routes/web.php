@@ -28,13 +28,14 @@ Route::post('/login',[AuthController::class,'Login']);
 
 
 Route::middleware(['auth', 'useRole:USER'])->group(function () {
-    Route::get('/contact',[UserController::class,'contact'])->middleware('auth');
-    Route::get('/',[UserController::class,'index'])->middleware('auth');
-    Route::get('/product/book/detail/{id}',[UserController::class,'Bookdetail'])->middleware('auth');
+    Route::get('/contact',[UserController::class,'contact']);
+    Route::get('/',[UserController::class,'index']);
+    Route::get('/product/book/detail/{id}',[UserController::class,'Bookdetail']);
 });
 
 Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
-    Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->middleware('auth');
+    Route::get('/admin/dashboard',[AdminController::class,'dashboard']);
+    Route::get('/admin/dashboard/bookpage',[AdminController::class,'bookview']);
     
 });
 
