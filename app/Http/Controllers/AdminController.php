@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Str;
 use App\Models\BookModel;
-use App\Models\CategoryModel;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\CategoryModel;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -50,14 +52,42 @@ $valid['thumbnail'] = $r->file('thumbnail')->store('thumbnail');
 BookModel::create($valid);
 return redirect('/admin/dashboard/bookpage');
      }
+
      public function viewformupdatebook($id){
       $model = BookModel::find($id);
       if($model){
 
-         return view('Admin.formbookupdate');
+         return view('Admin.formbookupdate',[
+            'active' => 'book',
+            'book' => $model,
+            'category' => $category = CategoryModel::all(),
+         ]);
       }
       return redirect('/404');
      }
+public function formupdatebook(Request $r){
+   $model = BookModel::find($r->id);
+      if($model){
+         $valid =  $r->validate([
+            "title" => "string|required",
+            "author" => "string|required",
+            "publisher" => "string|required",
+            "category_id" => "required",
+            "datepublished" => "string|required",
+            "description" => "string|required",
+            'thumbnail' => "image|nullable:unique:books"
+         ]);
+         if($r->file('thumbnail')){
+            if($r->oldthumb){
+               Storage::delete($r->oldthumb);
+            }
+         $valid['thumbnail'] = $r->file('thumbnail')->store('thumbnail');
+         }
+         $model->update($valid);
+         return redirect('/admin/book/detail/'.$r->id);
+      }
+}
+
      public function viewdetailbook($id){
       $model = BookModel::find($id);
       if($model){

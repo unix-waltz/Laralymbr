@@ -39,6 +39,8 @@ Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
     Route::get('/admin/dashboard/book/new',[AdminController::class,'newbookview']);
     Route::post('/new/book',[AdminController::class,'booknew']);
     Route::get('/admin/book/detail/{id}',[AdminController::class,'viewdetailbook']);
+    Route::get('/admin/book/update/{id}',[AdminController::class,'viewformupdatebook']);
+    Route::post('/admin/book/update',[AdminController::class,'formupdatebook']);
 });
 
 Route::middleware(['auth', 'useRole:OFFICER'])->group(function () {
