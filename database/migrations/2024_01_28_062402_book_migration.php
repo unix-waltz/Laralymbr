@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('datepublished');
             $table->text('description');
             $table->string('status')->default('canqueued');
-            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
             $table->string('thumbnail')->nullable();
             $table->rememberToken();
             $table->timestamps();

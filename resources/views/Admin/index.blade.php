@@ -91,78 +91,7 @@
         <span class="block text-gray-500">Hours spent on lections</span>
       </div>
     </div>
-    <div class="row-span-3 bg-white shadow rounded-lg">
-      <div class="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
-        <span>Users By Country ID</span>
-        <button type="button" class="inline-flex justify-center rounded-md px-1 -mr-1 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-600" id="options-menu" aria-haspopup="true" aria-expanded="true">
-          USERS
-          <svg class="-mr-1 ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-          </svg>
-        </button>
-        <!-- Refer here for full dropdown menu code: https://tailwindui.com/components/application-ui/elements/dropdowns -->
-      </div>
-      <div class="overflow-y-auto" style="max-height: 24rem;">
-        <ul class="p-6 space-y-6">
-          <li class="flex items-center">
-            <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-              <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="Annette Watson profile picture">
-            </div>
-            <span class="text-gray-600">United States</span>
-            <span class="ml-auto font-semibold">9.3</span>
-          </li>
-          <li class="flex items-center">
-            <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-              <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="Calvin Steward profile picture">
-            </div>
-            <span class="text-gray-600">Spain</span>
-            <span class="ml-auto font-semibold">8.9</span>
-          </li>
-          <li class="flex items-center">
-            <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-              <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="Ralph Richards profile picture">
-            </div>
-            <span class="text-gray-600">United Kingdom</span>
-            <span class="ml-auto font-semibold">8.7</span>
-          </li>
-          <li class="flex items-center">
-            <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-              <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="Bernard Murphy profile picture">
-            </div>
-            <span class="text-gray-600">Malaysia</span>
-            <span class="ml-auto font-semibold">8.2</span>
-          </li>
-          <li class="flex items-center">
-            <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-              <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="Arlene Robertson profile picture">
-            </div>
-            <span class="text-gray-600">Russia</span>
-            <span class="ml-auto font-semibold">8.2</span>
-          </li>
-          <li class="flex items-center">
-            <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-              <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="Jane Lane profile picture">
-            </div>
-            <span class="text-gray-600">Canada</span>
-            <span class="ml-auto font-semibold">8.1</span>
-          </li>
-          <li class="flex items-center">
-            <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-              <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="Pat Mckinney profile picture">
-            </div>
-            <span class="text-gray-600">India</span>
-            <span class="ml-auto font-semibold">7.9</span>
-          </li>
-          <li class="flex items-center">
-            <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-              <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="Norman Walters profile picture">
-            </div>
-            <span class="text-gray-600">Australia</span>
-            <span class="ml-auto font-semibold">7.7</span>
-          </li>
-        </ul>
-      </div>
-    </div>
+    
     <div class="flex flex-col row-span-3 bg-white shadow rounded-lg">
       <div class="px-6 py-5 font-semibold border-b border-gray-100">WHAT ARE YOUR TOP CAMPAIGNS?</div>
       <div class="p-4 flex-grow">

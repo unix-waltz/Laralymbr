@@ -164,8 +164,12 @@
 </p>
 <p class="font-normal text-black dark:text-gray-400">Date Publisher :{{$book->datepublished}}
 </p>
-<p class="font-normal text-black dark:text-gray-400">category :{{$book->category->category_name}}
-</p>
+@if ($book->category)
+    <p class="font-normal text-black dark:text-gray-400">category :{{$book->category->category_name}}</p>
+@else
+    <p class="font-normal text-black dark:text-gray-400">category :-</p>
+@endif
+
 <br>
           <p class="font-normal text-gray-700 dark:text-gray-400">{{$book->description}}
           </p>
@@ -176,9 +180,9 @@
 <a href="/admin/book/update/{{$book->id}}" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-800 dark:bg-white dark:border-gray-700 dark:text-gray-900 dark:hover:bg-gray-200 me-2 mb-2">
 Update
   </a>
-  <a type="button" class="text-white bg-[#050708] hover:bg-[#050708]/80 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#050708]/40 dark:focus:ring-gray-600 me-2 mb-2">
+  <a href="/admin/book/delete/{{$book->id}}" type="button" class="text-white bg-[#050708] hover:bg-[#050708]/80 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#050708]/40 dark:focus:ring-gray-600 me-2 mb-2">
    
-    Delate
+    Delete
     </a>
 </div>
 

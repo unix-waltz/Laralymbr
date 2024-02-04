@@ -41,6 +41,10 @@ Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
     Route::get('/admin/book/detail/{id}',[AdminController::class,'viewdetailbook']);
     Route::get('/admin/book/update/{id}',[AdminController::class,'viewformupdatebook']);
     Route::post('/admin/book/update',[AdminController::class,'formupdatebook']);
+    Route::get('/admin/book/delete/{id}',[AdminController::class,'deletebook']);
+    Route::get('/admin/book/category/{category:category_name}',[AdminController::class,'viewcategorybooks']);
+    Route::post('/admin/book/category/new',[AdminController::class,'newcategory']);
+    Route::get('/admin/category/delete/{category}',[AdminController::class,'categorydelete']);
 });
 
 Route::middleware(['auth', 'useRole:OFFICER'])->group(function () {

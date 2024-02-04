@@ -15,6 +15,7 @@ class AdminController extends Controller
    }
    public function bookview(){
       $books = BookModel::all();
+      $category = CategoryModel::all();
       $totalBooks = $books->count();
       $totalBorrowedBooks = $books->where('status', 'borrowed')->count();
       $totalQueuedBooks = $books->where('status', 'canqueued')->count();
@@ -27,6 +28,7 @@ class AdminController extends Controller
       'totalbooks' => $totalBooks,
       'borrowedbooks' => $totalBorrowedBooks,
       'canqueuedbooks' => $totalQueuedBooks,
+      'category' => $category,
       ]);
      }
      public function newbookview(){
@@ -98,5 +100,31 @@ public function formupdatebook(Request $r){
          ]);
       }
       return redirect('/404');
+     }
+     public function deletebook($id)
+     {
+      $model = BookModel::find($id);
+      if($model){
+$model->delete();
+return redirect('/admin/dashboard/bookpage');
+      }
+      return redirect('/404');
+     }
+     public function viewcategorybooks(CategoryModel $category){
+      return view('Admin.bookscategory',[
+         "active" => "book",
+         'data' => $category,
+      ]);
+     }
+     public function newcategory(Request $r){
+$valid = $r->validate([
+'category_name' => 'string|required|unique:categories|regex:/^\S*$/u',
+]);
+CategoryModel::create($valid);
+return redirect('/admin/dashboard/bookpage');
+     }
+     public function categorydelete(CategoryModel $category){
+$category->delete();
+      return redirect('/admin/dashboard/bookpage');
      }
 }
