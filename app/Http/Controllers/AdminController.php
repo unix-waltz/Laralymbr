@@ -105,7 +105,10 @@ public function formupdatebook(Request $r){
      {
       $model = BookModel::find($id);
       if($model){
-         Storage::delete($model->thumbnail);
+         if($model->thumbnail){
+             Storage::delete($model->thumbnail);
+         }
+        
 $model->delete();
 return redirect('/admin/dashboard/bookpage');
       }
@@ -127,5 +130,20 @@ return redirect('/admin/dashboard/bookpage');
      public function categorydelete(CategoryModel $category){
 $category->delete();
       return redirect('/admin/dashboard/bookpage');
+     }
+     public function viewcategoryedit(CategoryModel $id){
+return view('Admin.categoryedit',[
+   'active' => 'book',
+   'data' => $id
+]);
+     }
+     public function categoryedit(Request $r){
+
+      $valid = $r->validate([
+'category_name'=> 'required|unique:categories|regex:/^\S*$/u',
+      ]);
+      $model = CategoryModel::find($r->id);
+      $model->update($valid);
+      return redirect('/admin/book/category/'.$valid['category_name']);
      }
 }

@@ -1,5 +1,7 @@
 @extends('Admin.main')
 @section('content')
+
+
 <main class="p-6 sm:p-10 space-y-6">
   <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
     <div class="mr-6">

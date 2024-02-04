@@ -45,6 +45,8 @@ Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
     Route::get('/admin/book/category/{category:category_name}',[AdminController::class,'viewcategorybooks']);
     Route::post('/admin/book/category/new',[AdminController::class,'newcategory']);
     Route::get('/admin/category/delete/{category}',[AdminController::class,'categorydelete']);
+    Route::get('/admin/category/update/{id}',[AdminController::class,'viewcategoryedit']);
+    Route::post('/admin/category/update/',[AdminController::class,'categoryedit']);
 });
 
 Route::middleware(['auth', 'useRole:OFFICER'])->group(function () {
