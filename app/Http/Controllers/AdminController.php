@@ -105,6 +105,7 @@ public function formupdatebook(Request $r){
      {
       $model = BookModel::find($id);
       if($model){
+         Storage::delete($model->thumbnail);
 $model->delete();
 return redirect('/admin/dashboard/bookpage');
       }
