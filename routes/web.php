@@ -47,6 +47,7 @@ Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
     Route::get('/admin/category/delete/{category}',[AdminController::class,'categorydelete']);
     Route::get('/admin/category/update/{id}',[AdminController::class,'viewcategoryedit']);
     Route::post('/admin/category/update/',[AdminController::class,'categoryedit']);
+    Route::get('/admin/report/pdf',[AdminController::class,'reportpdf']);
 });
 
 Route::middleware(['auth', 'useRole:OFFICER'])->group(function () {

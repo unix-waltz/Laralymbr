@@ -15,7 +15,7 @@
     <h1 class="mb-4 text-sm font-bold leading-none tracking-tight text-gray-900  dark:text-white"> <span class="underline underline-offset-1 decoration-8 decoration-blue-400 dark:decoration-blue-600">  {{ now()->format('Y-m-d') }}</span></h1>
     
     
-    <h1 class="mb-4 text-xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"><mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500 ">Admin</mark> &nbsp;PDF Report.</h1>
+    <h1 class="mb-4 text-xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"><mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500 ">{{$by}}</mark> &nbsp;PDF Report.</h1>
     <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">This report includes: Book data, officers, users.</p>
     
     </div>
@@ -38,41 +38,66 @@
           <tbody>
               <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Apple MacBook Pro 17"
+                    Total Book
                   </th>
                   <td class="px-6 py-4">
-                      Silver
+                    {{$book}}
                   </td>
                   <td class="px-6 py-4">
-                      Laptop
+                      OK
                   </td>
               
               </tr>
               <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Microsoft Surface Pro
+                    Total Category
                   </th>
                   <td class="px-6 py-4">
-                      White
+                      {{$category}}
                   </td>
                   <td class="px-6 py-4">
-                      Laptop PC
+                     OK
                   </td>
                 
               </tr>
               <tr class="bg-white dark:bg-gray-800">
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Magic Mouse 2
+                    Total User
                   </th>
                   <td class="px-6 py-4">
-                      Black
+                     {{$user}}
                   </td>
                   <td class="px-6 py-4">
-                      Accessories
+                     OK
                   </td>
              
               </tr>
-          </tbody>
+              <tr class="bg-white dark:bg-gray-800">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  Books Can Borrowed
+                </th>
+                <td class="px-6 py-4">
+                   {{$totalBorrowedBooks}}
+                </td>
+                <td class="px-6 py-4">
+                   OK
+                </td>
+           
+            </tr>
+
+            <tr class="bg-white dark:bg-gray-800">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                   Books in Borrowed
+                </th>
+                <td class="px-6 py-4">
+                   {{$totalQueuedBooks}}
+                </td>
+                <td class="px-6 py-4">
+                   OK
+                </td>
+           
+            </tr>
+                </tbody>
       </table>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>

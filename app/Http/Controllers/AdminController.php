@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
 use App\Models\BookModel;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\CategoryModel;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -145,5 +147,17 @@ return view('Admin.categoryedit',[
       $model = CategoryModel::find($r->id);
       $model->update($valid);
       return redirect('/admin/book/category/'.$valid['category_name']);
+     }
+     public function reportpdf(){
+      $data = [
+         'book' => BookModel::all()->count(),
+         'category' => CategoryModel::all()->count(),
+         'user' => User::all()->where('role', 'USER')->count(),
+         'by' => 'Admin',
+         'totalBorrowedBooks' => BookModel::all()->where('status', 'borrowed')->count(),
+         'totalQueuedBooks' => BookModel::all()->where('status', 'canqueued')->count(),
+      ];
+      $pdf = Pdf::loadView('Admin.pdf-report', $data);
+    return $pdf->download(now()->format('Y-m-d').' -admin-report.pdf');
      }
 }

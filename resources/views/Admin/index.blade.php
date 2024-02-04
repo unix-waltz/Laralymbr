@@ -10,9 +10,9 @@
     </div>
     <div class="flex flex-wrap items-start justify-end -mb-3">
       
-      <button class="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">
+      <a href="/admin/report/pdf" class="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">
       Generate PDF Report
-      </button>
+      </a>
     </div>
   </div>
   <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
