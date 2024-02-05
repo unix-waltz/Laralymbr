@@ -21,7 +21,7 @@
             </ul>
         </div>
     </div>
-@endif
+       @endif
     <div class="flex flex-wrap items-start justify-end -mb-3">
       
       <a href="/admin/dashboard/book/new" class="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">

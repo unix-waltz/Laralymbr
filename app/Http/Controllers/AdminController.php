@@ -160,4 +160,60 @@ return view('Admin.categoryedit',[
       $pdf = Pdf::loadView('Admin.pdf-report', $data);
     return $pdf->download(now()->format('Y-m-d').' -admin-report.pdf');
      }
+     public function accounts(){
+      return view('Admin.accounts',[
+         'active' =>'accounts',
+         'users' => User::all()->where('role', 'USER')->count(),
+         'officer' => User::all()->where('role', 'OFFICER'),
+      ]);
+     }
+     public function accountusers(){
+      return view('Admin.accountusers',[
+         'active' =>'accounts',
+         'users' => User::all()->where('role', 'USER'),
+      ]);
+     }
+     public function officeregister(Request $request){
+       
+      $valid = $request->validate([
+          'username' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^\S*$/u'],
+          "fullname" => 'nullable|string',
+          "address" => 'nullable|string',
+          "password" => 'required|string|min:6',
+          "email" => 'required|unique:users',
+      
+
+      ]);
+      $valid['password'] = bcrypt($valid['password']); 
+      $valid['role'] = 'OFFICER';
+      User::create($valid);
+      return redirect('/admin/dashboard/account');
+  }
+  public function officeregisteredit(Request $request){
+       
+   $valid = $request->validate([
+       'username' => ['required', 'string', 'max:255', 'regex:/^\S*$/u'],
+       "fullname" => 'nullable|string',
+       "address" => 'nullable|string',
+       "email" => 'required',
+   
+
+   ]);
+   if($request->password){
+     $valid['password'] = bcrypt($request->password);  
+   }
+   
+   $valid['role'] = 'OFFICER';
+  $model = User::find($request->key);
+  $model->update($valid);
+   return redirect('/admin/dashboard/account');
+}
+public function unofficer(User $id){
+$id->update(['role'=> 'USER']);
+return redirect('/admin/dashboard/account');
+}
+public function deleteuser(User $id){
+   $id->delete();
+   return redirect('/admin/dashboard/account/alluser');
+}
 }

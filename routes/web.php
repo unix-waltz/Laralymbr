@@ -48,6 +48,12 @@ Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
     Route::get('/admin/category/update/{id}',[AdminController::class,'viewcategoryedit']);
     Route::post('/admin/category/update/',[AdminController::class,'categoryedit']);
     Route::get('/admin/report/pdf',[AdminController::class,'reportpdf']);
+    Route::get('/admin/dashboard/account',[AdminController::class,'accounts']);
+    Route::get('/admin/dashboard/account/alluser',[AdminController::class,'accountusers']);
+    Route::post('/admin/office/register',[AdminController::class,'officeregister']);
+    Route::post('/admin/office/register/edit',[AdminController::class,'officeregisteredit']);
+    Route::get('/admin/office/un/{id}',[AdminController::class,'unofficer']);
+    Route::get('/admin/user/register/del/{id}',[AdminController::class,'deleteuser']);
 });
 
 Route::middleware(['auth', 'useRole:OFFICER'])->group(function () {
