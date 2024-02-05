@@ -13,7 +13,13 @@ use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller
 {
    public function dashboard(){
-    return view('Admin.index',['active' => "dashboard"]);
+    return view('Admin.index',[
+      'active' => "dashboard",
+      'nbook' => BookModel::all()->where('status', 'borrowed')->count(),
+      'okbook'  => BookModel::all()->where('status', 'canqueued')->count(),
+      'book' => BookModel::all()->count(),
+      'user' => User::all()->count(),
+   ]);
    }
    public function bookview(){
       $books = BookModel::all();

@@ -23,8 +23,8 @@
         </svg>
       </div>
       <div>
-        <span class="block text-2xl font-bold">89562</span>
-        <span class="block text-gray-500">Daily Unique Visitors</span>
+        <span class="block text-2xl font-bold">{{$user}}</span>
+        <span class="block text-gray-500">Total User</span>
       </div>
     </div>
     <div class="flex items-center p-8 bg-white shadow rounded-lg">
@@ -34,8 +34,8 @@
         </svg>
       </div>
       <div>
-        <span class="block text-2xl font-bold">27.6%</span>
-        <span class="block text-gray-500">CTR</span>
+        <span class="block text-2xl font-bold">{{$okbook}}</span>
+        <span class="block text-gray-500">Books Can Borrowed</span>
       </div>
     </div>
     <div class="flex items-center p-8 bg-white shadow rounded-lg">
@@ -45,9 +45,9 @@
         </svg>
       </div>
       <div>
-        <span class="inline-block text-2xl font-bold">3m 45s</span>
-        <span class="inline-block text-xl text-gray-500 font-semibold">(-32%)</span>
-        <span class="block text-gray-500">Average Engagement Time</span>
+        <span class="inline-block text-2xl font-bold">{{$nbook}}</span>
+        <span class="inline-block text-xl text-gray-500 font-semibold"></span>
+        <span class="block text-gray-500">books Has Borrowed</span>
       </div>
     </div>
     <div class="flex items-center p-8 bg-white shadow rounded-lg">
@@ -57,8 +57,8 @@
         </svg>
       </div>
       <div>
-        <span class="block text-2xl font-bold">956326</span>
-        <span class="block text-gray-500">Event Count</span>
+        <span class="block text-2xl font-bold">{{$book}}</span>
+        <span class="block text-gray-500">Total Books</span>
       </div>
     </div>
   </section>
