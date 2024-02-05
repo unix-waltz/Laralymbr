@@ -224,6 +224,7 @@ public function setting(){
 }
 public function profiler(Request $r){
    // @dd($r->file('profilephoto'));
+
 $valid = $r->validate([
    'username' => 'required|regex:/^\S*$/u',
    'fullname' => 'required',
@@ -240,5 +241,10 @@ if($r->file('profilephoto')){
 $model = User::find(Auth()->user()->id);
 $model->update($valid);
 return redirect('/admin/dashboard/setting');
+}
+public function viewprofiler(){
+   return view('Admin.profileEdit',[
+      'active' => 'setting',
+   ]);
 }
 }
