@@ -1,7 +1,7 @@
 @extends('Admin.main')
 @section('content')
 
-    <section class="bg-white dark:bg-gray-900">
+    <section class=" dark:bg-gray-900">
         <div class="max-w-[50%] px-4 py-8 mx-auto lg:py-16">
             
 

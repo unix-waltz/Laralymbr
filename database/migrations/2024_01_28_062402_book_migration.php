@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('status')->default('canqueued');
             $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
             $table->string('thumbnail')->nullable();
+            $table->string('rating')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

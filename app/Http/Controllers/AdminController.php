@@ -247,4 +247,20 @@ public function viewprofiler(){
       'active' => 'setting',
    ]);
 }
+public function search(Request $r){
+   $search = $r->input('search');
+
+   $results = BookModel::where('title', 'like', '%' . $search . '%')
+       ->orWhere('author', 'like', '%' . $search . '%')
+       ->orWhere('datepublished', 'like', '%' . $search . '%')
+       ->orWhere('description', 'like', '%' . $search . '%')
+       ->orWhere('status', 'like', '%' . $search . '%')
+       ->orWhere('publisher', 'like', '%' . $search . '%')
+       ->get();
+return view('Admin.search',[
+   "results" => $results,
+   "active" => 'book',
+   "search" => $search,
+]);
+}
 }
