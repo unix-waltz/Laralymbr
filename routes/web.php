@@ -54,6 +54,8 @@ Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
     Route::post('/admin/office/register/edit',[AdminController::class,'officeregisteredit']);
     Route::get('/admin/office/un/{id}',[AdminController::class,'unofficer']);
     Route::get('/admin/user/register/del/{id}',[AdminController::class,'deleteuser']);
+    Route::get('/admin/dashboard/setting',[AdminController::class , 'setting']);
+    Route::post('/admin/dashboard/setting',[AdminController::class , 'profiler']);
 });
 
 Route::middleware(['auth', 'useRole:OFFICER'])->group(function () {

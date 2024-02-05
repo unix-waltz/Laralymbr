@@ -216,4 +216,29 @@ public function deleteuser(User $id){
    $id->delete();
    return redirect('/admin/dashboard/account/alluser');
 }
+public function setting(){
+   return view('Admin.setting',[
+      'active' => 'setting',
+      
+   ]);
+}
+public function profiler(Request $r){
+   // @dd($r->file('profilephoto'));
+$valid = $r->validate([
+   'username' => 'required|regex:/^\S*$/u',
+   'fullname' => 'required',
+    'email' => 'email',
+    'address' => 'nullable|string',
+    'profilephoto' => 'nullable|image',
+]);
+if($r->file('profilephoto')){
+   if($r->oldphoto){
+      Storage::delete(Auth()->user()->profilephoto);
+   }
+   $valid['profilephoto'] = $r->file('profilephoto')->store('profilephoto');
+}
+$model = User::find(Auth()->user()->id);
+$model->update($valid);
+return redirect('/admin/dashboard/setting');
+}
 }
