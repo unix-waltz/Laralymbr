@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OfficerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +62,30 @@ Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
 });
 
 Route::middleware(['auth', 'useRole:OFFICER'])->group(function () {
-    Route::get('/petugas/dashboard', 'PetugasController@dashboard');
+    Route::get('/officer/dashboard',[OfficerController::class,'dashboard']);
+    Route::get('/officer/dashboard/bookpage',[OfficerController::class,'bookview']);
+    Route::get('/officer/dashboard/book/new',[OfficerController::class,'newbookview']);
+    Route::post('/new/book',[OfficerController::class,'booknew']);
+    Route::get('/officer/book/detail/{id}',[OfficerController::class,'viewdetailbook']);
+    Route::get('/officer/book/update/{id}',[OfficerController::class,'viewformupdatebook']);
+    Route::post('/officer/book/update',[OfficerController::class,'formupdatebook']);
+    Route::get('/officer/book/delete/{id}',[OfficerController::class,'deletebook']);
+    Route::get('/officer/book/category/{category:category_name}',[OfficerController::class,'viewcategorybooks']);
+    Route::post('/officer/book/category/new',[OfficerController::class,'newcategory']);
+    Route::get('/officer/category/delete/{category}',[OfficerController::class,'categorydelete']);
+    Route::get('/officer/category/update/{id}',[OfficerController::class,'viewcategoryedit']);
+    Route::post('/officer/category/update/',[OfficerController::class,'categoryedit']);
+    Route::get('/officer/report/pdf',[OfficerController::class,'reportpdf']);
+    Route::get('/officer/dashboard/account',[OfficerController::class,'accounts']);
+    Route::get('/officer/dashboard/account/alluser',[OfficerController::class,'accountusers']);
+    Route::post('/officer/office/register',[OfficerController::class,'officeregister']);
+    Route::post('/officer/office/register/edit',[OfficerController::class,'officeregisteredit']);
+    Route::get('/officer/office/un/{id}',[OfficerController::class,'unofficer']);
+    Route::get('/officer/user/register/del/{id}',[OfficerController::class,'deleteuser']);
+    Route::get('/officer/dashboard/setting',[OfficerController::class , 'setting']);
+    Route::get('/officer/dashboard/setting/edit',[OfficerController::class , 'viewprofiler']);
+    Route::post('/officer/dashboard/setting',[OfficerController::class , 'profiler']);
+    Route::get('/officer/search',[OfficerController::class, 'search']);
 });
 
 
