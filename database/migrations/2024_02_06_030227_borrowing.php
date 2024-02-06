@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('userid')->constrained('users')->onDelete('cascade');
             $table->foreignId('bookid')->constrained('books')->onDelete('cascade');
-            $table->timestamp('dateborrowed');
-            $table->timestamp('datereturned');
+            $table->timestamp('dateborrowed')->nullable();
+            $table->timestamp('datereturned')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

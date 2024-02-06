@@ -90,13 +90,18 @@
                 <div class="-mt-1 font-sans text-sm font-semibold">Report</div>
             </div>
         </a>
-        <a href="#" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-           
-            <div class="text-left rtl:text-right">
+        @if ($title->status == 'canqueued')
+        <form action="/user/borrow" method="post" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+          @csrf
+          @method('POST')
+          <input type="hidden" name='bookid' value={{$title->id}}>
+           <input type="hidden" name='userid' value={{Auth()->user()->id}}>
+            <button type="submit" class="text-left rtl:text-right">
                 <div class="mb-1 text-xs">Get in on</div>
                 <div class="-mt-1 font-sans text-sm font-semibold">i want this Book</div>
-            </div>
-        </a>
+            </button>
+        </form>
+        @endif
     </div>
 </div>
 

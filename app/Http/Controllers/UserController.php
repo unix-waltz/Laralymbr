@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\BookModel;
-use App\Models\CategoryModel;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\CategoryModel;
+use App\Models\BorrowingModel;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -35,5 +36,15 @@ public function bookbycategory(CategoryModel $category){
     return view('User.bookscategory',[
         'data' => $category,
     ]);
+}
+public function userborrow(Request $r){
+    $valid = $r->validate([
+        'bookid' => "required",
+        'userid' => "required",
+    ]);
+    $valid['dateborrowed'] = now();
+    BookModel::find($r->bookid)->update(['status' => 'borrowed']);
+    BorrowingModel::create($valid);
+    return redirect ('/');
 }
 }
