@@ -4,7 +4,7 @@
 
 <br><br>
 <!-- Breadcrumb -->
-<nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 max-w-[20%] mx-auto" aria-label="Breadcrumb">
+<nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 max-w-[23%] mx-auto" aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
       <li class="inline-flex items-center">
         <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
@@ -35,7 +35,7 @@
           <svg class="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
           </svg>
-          <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">1</span>
+          <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">{{$title->page}}&nbsp; </span>
         </div>
       </li>
     </ol>
@@ -45,19 +45,35 @@
     <section class="flex items-center">
         <div class="w-[20%]">
           <a href="#" class="block border border-gray-200 rounded-lg overflow-hidden hover:border-gray-700 dark:border-gray-700">
-            <img class="object-cover w-full h-96" src="{{asset('assets/img/psychology_of_money.jpg')}}" alt="">
+            <img class="object-cover w-full h-96" src="{{asset('storage/'.$title->thumbnail)}}" alt="">
           </a>
         </div>
       
-        <a href="#" class="ml-16 h-full w-[80%] block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-          <span class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">Default</span>
-<span class="bg-gray-100 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">Dark</span>
+        <div href="#" class="ml-16 h-full w-[80%] block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{$title->title}}</h5>
+          @if ($title->status == 'canqueued')
+          <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
+            <span class="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
+            Available
+        </span>
+          @endif
+          @if ($title->status == 'borrowed')     
+          <span class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+            <span class="w-2 h-2 me-1 bg-red-500 rounded-full"></span>
+            Unavailable
+        </span>
+        @endif
+        <span class="normal hover:italic hover:text-sky-600 text-gray-500"># <a href="/user/category/{{$title->category->category_name}}"> {{$title->category->category_name}}</a></span>
+           <p class="text-sky-600" >{{$title->author}}</p>
+           <p class="text-black text-sm" >Publisher :  <span class="normal hover:italic text-gray-500">{{$title->publisher}}</span> </p>
+           <p class="text-black text-sm" >Date Published :  <span class="normal hover:italic text-gray-500">{{$title->datepublished}}</span> </p>
+
+         
 <br>
-          <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nam quia libero vero voluptatum voluptates omnis esse? Blanditiis temporibus optio illo. Ipsa amet dolore expedita. Inventore nobis, sapiente ipsum illo ipsam fugiat. Impedit sit, nemo, doloribus distinctio autem ipsam voluptate recusandae temporibus omnis libero minima fugit, facilis voluptatibus. Possimus, maxime dolore vel magni, dolorem nam doloribus suscipit animi porro, sed recusandae cum? Vitae, deserunt similique libero repellendus quod perferendis culpa rerum temporibus nam commodi a consectetur voluptate corrupti iure quos? Illum odit quisquam tenetur voluptate voluptates! Quaerat quia unde rerum nihil exercitationem beatae sed animi iure? Quae asperiores culpa eligendi!
+          <p class="font-normal text-gray-700 dark:text-gray-400">{{$title->description}}
           </p>
-        </a>
+   
+        </div>
       </section>
       
 <br><br>

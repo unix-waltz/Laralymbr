@@ -19,7 +19,7 @@
                     </div>
                 </div>
 @endif
-        <form action="/new/book" method="post" enctype="multipart/form-data">
+        <form action="/officer/new/book" method="post" enctype="multipart/form-data">
             @csrf
             @method('POST')
             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">

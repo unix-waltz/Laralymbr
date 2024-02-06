@@ -171,7 +171,7 @@ return view('Officer.categoryedit',[
       return view('Officer.accounts',[
          'active' =>'accounts',
          'users' => User::all()->where('role', 'USER')->count(),
-         'officer' => User::all()->where('role', 'OFFICER'),
+         'officer' => User::all()->where('role', 'OFFICER')->count(),
       ]);
      }
      public function accountusers(){
@@ -180,41 +180,8 @@ return view('Officer.categoryedit',[
          'users' => User::all()->where('role', 'USER'),
       ]);
      }
-     public function officeregister(Request $request){
-       
-      $valid = $request->validate([
-          'username' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^\S*$/u'],
-          "fullname" => 'nullable|string',
-          "address" => 'nullable|string',
-          "password" => 'required|string|min:6',
-          "email" => 'required|unique:users',
-      
-
-      ]);
-      $valid['password'] = bcrypt($valid['password']); 
-      $valid['role'] = 'OFFICER';
-      User::create($valid);
-      return redirect('/Officer/dashboard/account');
-  }
-  public function officeregisteredit(Request $request){
-       
-   $valid = $request->validate([
-       'username' => ['required', 'string', 'max:255', 'regex:/^\S*$/u'],
-       "fullname" => 'nullable|string',
-       "address" => 'nullable|string',
-       "email" => 'required',
-   
-
-   ]);
-   if($request->password){
-     $valid['password'] = bcrypt($request->password);  
-   }
-   
-   $valid['role'] = 'OFFICER';
-  $model = User::find($request->key);
-  $model->update($valid);
-   return redirect('/Officer/dashboard/account');
-}
+ 
+ 
 public function unofficer(User $id){
 $id->update(['role'=> 'USER']);
 return redirect('/Officer/dashboard/account');
@@ -247,7 +214,7 @@ if($r->file('profilephoto')){
 }
 $model = User::find(Auth()->user()->id);
 $model->update($valid);
-return redirect('/Officer/dashboard/setting');
+return redirect('/officer/dashboard/setting');
 }
 public function viewprofiler(){
    return view('Officer.profileEdit',[

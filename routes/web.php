@@ -31,7 +31,8 @@ Route::post('/login',[AuthController::class,'Login']);
 Route::middleware(['auth', 'useRole:USER'])->group(function () {
     Route::get('/contact',[UserController::class,'contact']);
     Route::get('/',[UserController::class,'index']);
-    Route::get('/product/book/detail/{id}',[UserController::class,'Bookdetail']);
+    Route::get('/product/book/detail/{title:title}',[UserController::class,'Bookdetail']);
+    Route::get('/user/category/{category:category_name}',[UserController::class,'bookbycategory']);
 });
 
 Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
@@ -65,7 +66,7 @@ Route::middleware(['auth', 'useRole:OFFICER'])->group(function () {
     Route::get('/officer/dashboard',[OfficerController::class,'dashboard']);
     Route::get('/officer/dashboard/bookpage',[OfficerController::class,'bookview']);
     Route::get('/officer/dashboard/book/new',[OfficerController::class,'newbookview']);
-    Route::post('/new/book',[OfficerController::class,'booknew']);
+    Route::post('/officer/new/book',[OfficerController::class,'booknew']);
     Route::get('/officer/book/detail/{id}',[OfficerController::class,'viewdetailbook']);
     Route::get('/officer/book/update/{id}',[OfficerController::class,'viewformupdatebook']);
     Route::post('/officer/book/update',[OfficerController::class,'formupdatebook']);
