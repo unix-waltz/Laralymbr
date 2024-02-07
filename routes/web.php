@@ -22,6 +22,7 @@ Route::middleware(['auth', 'useRole:USER'])->group(function () {
     Route::get('/product/book/detail/{title:title}',[UserController::class,'Bookdetail']);
     Route::get('/user/category/{category:category_name}',[UserController::class,'bookbycategory']);
     Route::get('/mybooks/{username}',[UserController::class,'mybooks']);
+    Route::get('/mybook/detail/{title:title}',[UserController::class,'myBookdetail']);
 });
 
 Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
@@ -48,7 +49,7 @@ Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
     Route::get('/admin/dashboard/setting',[AdminController::class , 'setting']);
     Route::get('/admin/dashboard/setting/edit',[AdminController::class , 'viewprofiler']);
     Route::post('/admin/dashboard/setting',[AdminController::class , 'profiler']);
-    Route::get('//admin/search',[AdminController::class, 'search']);
+    Route::get('/admin/search',[AdminController::class, 'search']);
 });
 
 Route::middleware(['auth', 'useRole:OFFICER'])->group(function () {

@@ -27,6 +27,12 @@ class UserController extends Controller
             'page' => $title->page = Str::limit($title->title, 14),
         ]);
     }
+    public function myBookdetail(BookModel $title){
+        return view('User.mybookdetail',[
+            'title' => $title,
+            'page' => $title->page = Str::limit($title->title, 14),
+        ]);
+    }
 public function contact(){
     return view('User.contact');
 }

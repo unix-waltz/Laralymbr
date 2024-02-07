@@ -2,12 +2,12 @@
 
 @section('content')
 
-<div class="grid grid-cols-4 w-[90%] mx-auto mt-11 gap-3">
+<div class="grid grid-cols-3 w-[90%] mx-auto mt-11 gap-3">
   @foreach ($user->borrowedBooks as $b )
   @if ($b->status == 'borrowed' &&  $b->book->status == 'borrowed')
     
 
-        <a href="/product/book/detail/{{$b->book->title}}" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <a href="/mybook/detail/{{$b->book->title}}" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
               <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{asset('storage/'.$b->book->thumbnail)}}" alt="">
               <div class="flex flex-col justify-between p-4 leading-normal">
                   <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{$b->book->title}}</h5>
