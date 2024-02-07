@@ -3,7 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\BorrowingModel;
+use App\Models\BorrowModel;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -28,7 +28,10 @@ class User extends Authenticatable
         'role',
         'profilephoto',
     ];
-
+    public function borrowedBooks()
+    {
+        return $this->hasMany(BorrowModel::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -48,7 +51,5 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function borrowing(){
-        return $this->belongsTo(BorrowingModel::class);
-    }
+ 
 }

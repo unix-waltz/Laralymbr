@@ -6,19 +6,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OfficerController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-Route::get('/home',function(){
-return 'ini home';
-});
 
 // authorization routes
 Route::get('/logout',[AuthController::class,'logout'])->middleware('auth');
@@ -34,6 +21,7 @@ Route::middleware(['auth', 'useRole:USER'])->group(function () {
     Route::get('/',[UserController::class,'index']);
     Route::get('/product/book/detail/{title:title}',[UserController::class,'Bookdetail']);
     Route::get('/user/category/{category:category_name}',[UserController::class,'bookbycategory']);
+    Route::get('/mybooks/{username}',[UserController::class,'mybooks']);
 });
 
 Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
