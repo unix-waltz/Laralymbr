@@ -10,7 +10,7 @@
         <a href="/product/book/detail/{{$b->book->title}}" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
               <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{asset('storage/'.$b->book->thumbnail)}}" alt="">
               <div class="flex flex-col justify-between p-4 leading-normal">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{$b->book->title}}</h5>
+                  <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{$b->book->title}}</h5>
                   <p class="mb-3 font-normal text-xs text-gray-700 dark:text-gray-400">{{$b->book->excerpt}}</p>
                  <div class="flex item-center">
                   <svg class="w-4 h-4 ms-1 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">

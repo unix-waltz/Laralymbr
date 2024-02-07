@@ -229,7 +229,6 @@ public function setting(){
    ]);
 }
 public function profiler(Request $r){
-   // @dd($r->file('profilephoto'));
 
 $valid = $r->validate([
    'username' => 'required|regex:/^\S*$/u',
