@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BorrowModel;
+use App\Models\ReviewsModel;
 use App\Models\User;
 use App\Models\BookModel;
 use Illuminate\Support\Str;
@@ -63,5 +64,16 @@ public function mybooks($username){
     return view('User.mybooks',[
         'user' => $user,
     ]);
+}
+public function comment(Request $r){
+   $valid = $r->validate([
+"rating" => "integer|required",
+"review" => "string|required",
+'bookid' => "required",
+'userid' => "required",
+   ]);
+   $valid['commented_at'] = now();
+   ReviewsModel::create($valid);
+   return redirect()->back();
 }
 }

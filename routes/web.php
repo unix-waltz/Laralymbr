@@ -23,6 +23,7 @@ Route::middleware(['auth', 'useRole:USER'])->group(function () {
     Route::get('/user/category/{category:category_name}',[UserController::class,'bookbycategory']);
     Route::get('/mybooks/{username}',[UserController::class,'mybooks']);
     Route::get('/mybook/detail/{title:title}',[UserController::class,'myBookdetail']);
+    Route::post('/user/comment',[UserController::class,'comment']);
 });
 
 Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {

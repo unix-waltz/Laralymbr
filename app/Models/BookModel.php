@@ -14,6 +14,9 @@ class BookModel extends Model
     public function category(){
         return $this->belongsTo(CategoryModel::class);
     }
+    public function comments(){
+return $this->hasMany(ReviewsModel::class,'bookid', 'id');
+    }
     public function borrowers()
     {
         return $this->hasMany(BorrowModel::class);

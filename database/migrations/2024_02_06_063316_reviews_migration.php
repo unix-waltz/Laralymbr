@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->integer('rating');
             $table->text('review');
+            $table->date('commented_at');
             $table->foreignId('bookid')->constrained('books')->onDelete('cascade');
             $table->foreignId('userid')->constrained('users')->onDelete('cascade');
             $table->rememberToken();
