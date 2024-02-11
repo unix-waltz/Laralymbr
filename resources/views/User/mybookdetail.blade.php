@@ -96,7 +96,7 @@
           @if ($title->status == 'canqueued')     
           <span class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
             <span class="w-2 h-2 me-1 bg-red-500 rounded-full"></span>
-            Unavailable
+            You Returned This Book
         </span>
         @endif
         <span class="normal hover:italic hover:text-sky-600 text-gray-500"># <a href="/user/category/{{$title->category->category_name}}"> {{$title->category->category_name}}</a></span>
@@ -126,7 +126,8 @@
                 <div class="-mt-1 font-sans text-sm font-semibold">Report</div>
             </div>
         </a>
-        <form action="/user/borrow" method="post" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+           @if ($title->status == 'borrowed')
+           <form action="/user/return" method="post" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
           @csrf
           @method('POST')
           <input type="hidden" name='book_id' value={{$title->id}}>
@@ -135,17 +136,23 @@
                 <div class="mb-1 text-xs">finished reading?</div>
                 <div class="-mt-1 font-sans text-sm font-semibold">I want to return this book</div>
             </button>
-        </form>
+          
+        </form> 
+         @endif
     </div>
 </div>
 
 </div>
 
+@if ($title->status == 'borrowed')
+  @if ($status == "OK")
+    
+
 {{-- comment section --}}
 <section class="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
   <div class="max-w-2xl mx-auto px-4">
       <div class="flex justify-between items-center mb-6">
-        <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion (20)</h2>
+        <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Comments ({{$title->comments->count()}})</h2>
     </div>
     <form class="mb-6" method="post" action="/user/comment" >
       @method('POST')
@@ -184,38 +191,47 @@
         </button>
     </form>
     @foreach ($title->comments->reverse() as $c )
+    
   <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900">
+    
         <footer class="flex justify-between items-center mb-2">
             <div class="flex items-center">
                 <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
                         class="mr-2 w-6 h-6 rounded-full"
                         src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
                         alt="Michael Gough">{{$c->userComents->fullname}}
+                        <span class="text-sm text-gray-500">
+                          @if ($c->userid == Auth()->user()->id)
+                            &nbsp; {{'( You )'}}
+                          @endif
+                        </span>
                       </p>
-                <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-08"
-                        title="February 8th, 2022">{{$c->commented_at}}</time></p>
+                <p class="text-xs  hover:italic text-gray-600 dark:text-gray-400">{{$c->commented_at}}</p>
             </div>
-            <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
-                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                type="button">
-                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                    <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
-                </svg>
-                <span class="sr-only">Comment settings</span>
-            </button>
-            <!-- Dropdown menu -->
-            <div id="dropdownComment1"
-                class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+            <button id="dropdownComment{{$c->id}}Button" data-dropdown-toggle="dropdownComment{{$c->id}}"
+              class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              type="button">
+              <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                  <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+              </svg>
+              <span class="sr-only">Comment settings</span>
+          </button>
+          <!-- Dropdown menu -->
+          <div id="dropdownComment{{$c->id}}"
+              class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
                     aria-labelledby="dropdownMenuIconHorizontalButton">
-                    <li>
-                      <a href="#"
+                    @if ($c->userid == Auth()->user()->id)
+                     <li>
+                      <a href="/user/comment/delete/{{$c->id}}"
                           class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
                   </li>
-                    <li>
+                    @else
+                      <li>
                         <a href="#"
                             class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
                     </li>
+                    @endif
                 </ul>
             </div>
         </footer>
@@ -252,4 +268,6 @@
 @endforeach
   </div>
 </section>
+@endif
+@endif
 @endsection

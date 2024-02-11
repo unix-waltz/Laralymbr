@@ -23,15 +23,39 @@ class UserController extends Controller
         ]);
     }
     public function Bookdetail(BookModel $title){
+     $status = 'NOTOK';
+        $bookBorrow = BorrowModel::where('book_id', $title->id)
+        ->where('user_id', Auth()->user()->id)
+        ->where('status', 'borrowed')
+        ->first();
+    if($bookBorrow){
+$status = "OK";
+    }
         return view('User.detailbook',[
             'title' => $title,
             'page' => $title->page = Str::limit($title->title, 14),
+            "status" => $status,
         ]);
     }
     public function myBookdetail(BookModel $title){
+        $status = 'NOTOK';
+        $bookBorrow = BorrowModel::where('book_id', $title->id)
+        ->where('user_id', Auth()->user()->id)
+        ->where('status', 'borrowed')
+        ->first();
+    if($bookBorrow){
+$status = "OK";
+    }
         return view('User.mybookdetail',[
             'title' => $title,
             'page' => $title->page = Str::limit($title->title, 14),
+            "status" => $status,
+        ]);
+    }
+
+    public function myhistory(){
+        return view('User.myhistory',[
+            "data" => BorrowModel::where('user_id',Auth()->user()->id)->get(),
         ]);
     }
 public function contact(){
@@ -56,6 +80,25 @@ public function userborrow(Request $r){
     BookModel::find($r->book_id)->update(['status' => 'borrowed']);
     return redirect ('/');
 }
+public function bookreturn(Request $r){
+    $valid = $r->validate([
+        'book_id' => "required",
+        'user_id' => "required",
+    ]);
+    $valid['returned_at'] = now();
+    $valid['status'] = 'returned';
+    $bookBorrow = BorrowModel::where('book_id', $r->book_id)
+    ->where('user_id', $r->user_id)
+    ->where('status', 'borrowed')
+    ->first();
+if($bookBorrow){
+$bookBorrow->update($valid);
+BookModel::find($r->book_id)->update(['status' => 'canqueued']);
+return redirect()->back();
+}else{
+    return redirect('/404');
+}
+}
 public function mybooks($username){
     $user = User::findOrFail(Auth()->user()->id);
     foreach ($user->borrowedBooks as $book) {
@@ -75,5 +118,9 @@ public function comment(Request $r){
    $valid['commented_at'] = now();
    ReviewsModel::create($valid);
    return redirect()->back();
+}
+public function commentdelete(ReviewsModel $id){
+    $id->delete();
+    return redirect()->back();
 }
 }
