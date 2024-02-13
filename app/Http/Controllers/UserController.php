@@ -7,6 +7,7 @@ use App\Models\ReviewsModel;
 use App\Models\User;
 use App\Models\BookModel;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\CategoryModel;
 use App\Http\Controllers\Controller;
@@ -57,6 +58,9 @@ $status = "OK";
         return view('User.myhistory',[
             "data" => BorrowModel::where('user_id',Auth()->user()->id)->get(),
         ]);
+    }
+    public function myprofile(){
+        return view('User.myprofile');
     }
 public function contact(){
     return view('User.contact');
@@ -123,4 +127,28 @@ public function commentdelete(ReviewsModel $id){
     $id->delete();
     return redirect()->back();
 }
+public function vieweditprofiler(){
+    return view('User.editmyprofile',[
+       'active' => 'setting',
+    ]);
+ }
+ public function profiler(Request $r){
+
+    $valid = $r->validate([
+       'username' => 'required|regex:/^\S*$/u',
+       'fullname' => 'required',
+        'email' => 'email',
+        'address' => 'nullable|string',
+        'profilephoto' => 'nullable|image',
+    ]);
+    if($r->file('profilephoto')){
+       if($r->oldphoto){
+          Storage::delete(Auth()->user()->profilephoto);
+       }
+       $valid['profilephoto'] = $r->file('profilephoto')->store('profilephoto');
+    }
+    $model = User::find(Auth()->user()->id);
+    $model->update($valid);
+    return redirect('/myprofile/@'.Auth()->user()->username);
+    }
 }

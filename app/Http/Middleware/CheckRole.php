@@ -24,7 +24,7 @@ class CheckRole
         if (auth()->user() && auth()->user()->role == 'OFFICER') {
             return redirect('/officer/dashboard');
     } 
-    if (auth()->user() && auth()->user()->role == 'OFFICER') {
+    if (auth()->user() && auth()->user()->role == 'USER') {
         return redirect('/');
 } 
 

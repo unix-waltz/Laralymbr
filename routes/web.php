@@ -26,7 +26,10 @@ Route::middleware(['auth', 'useRole:USER'])->group(function () {
     Route::post('/user/comment', [UserController::class, 'comment']);
     Route::get('/user/comment/delete/{id:id}', [UserController::class, 'commentdelete']);
     Route::get('/user/myhistory/{username}', [UserController::class, 'myhistory']);
+    Route::get('/user/profile/setting/edit', [UserController::class, 'vieweditprofiler']);
+    Route::get('/myprofile/{username}', [UserController::class, 'myprofile']);
     Route::post('/user/return', [UserController::class, 'bookreturn']);
+    Route::post('/user/profile/setting', [UserController::class, 'profiler']);
 });
 
 Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
