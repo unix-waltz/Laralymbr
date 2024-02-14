@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BorrowModel;
+use App\Models\CollectionModel;
 use App\Models\ReviewsModel;
 use App\Models\User;
 use App\Models\BookModel;
@@ -36,6 +37,10 @@ $status = "OK";
             'title' => $title,
             'page' => $title->page = Str::limit($title->title, 14),
             "status" => $status,
+            'collection' => CollectionModel::where('bookid', $title->id)
+            ->where('userid',Auth()->user()->id )
+            ->first(),
+            'savedpost' => CollectionModel::where('bookid', $title->id),
         ]);
     }
     public function myBookdetail(BookModel $title){
@@ -150,5 +155,18 @@ public function vieweditprofiler(){
     $model = User::find(Auth()->user()->id);
     $model->update($valid);
     return redirect('/myprofile/@'.Auth()->user()->username);
+    }
+    public function collections(Request $r){
+        $valid = $r->validate([
+            'bookid' => "required",
+            'userid' => "required",
+        ]);
+        if($r->data == "NEW"){
+CollectionModel::create($valid);
+        }elseif($r->data == 'DEL'){
+CollectionModel::find($r->collid)->delete();
+        }
+
+return redirect()->back();
     }
 }

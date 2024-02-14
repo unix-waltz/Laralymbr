@@ -42,7 +42,7 @@
                       </div>
                       <div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
                         <div class="py-6 px-3  sm:mt-0">
-                          <a href="/user/profile/setting/edit" class="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150" type="button">
+                          <a href="/user/profile/setting/edit" class="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150" type="button">
                             Edit
                           </a> 
                         </div>
@@ -70,7 +70,7 @@
                           <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti architecto sint dolore, sit odit minima animi optio voluptatum sequi et, unde cumque. Iusto dolorum praesentium odio recusandae. Impedit, possimus accusantium.
                           </p>
-                          <a href="/admin/dashboard/setting/edit" class="font-normal text-pink-500">Edit</a>
+                          <a href="" class="font-normal text-pink-500">Learn More</a>
                         </div>
                       </div>
                     </div>

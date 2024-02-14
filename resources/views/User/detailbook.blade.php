@@ -63,7 +63,7 @@
   </nav>
 
 <div class="mx-auto w-[70%] mt-11">
-    <section class="flex items-center">
+    <section class="flex items-center pb-3">
         <div class="w-[20%]">
           <a href="#" class="block border border-gray-200 rounded-lg overflow-hidden hover:border-gray-700 dark:border-gray-700">
             <img class="object-cover w-full h-96" src="{{asset('storage/'.$title->thumbnail)}}" alt="">
@@ -92,18 +92,42 @@
            <p class="text-sky-600" >{{$title->author}}</p>
            <p class="text-black text-sm" >Publisher :  <span class="normal hover:italic text-gray-500">{{$title->publisher}}</span> </p>
            <p class="text-black text-sm" >Date Published :  <span class="normal hover:italic text-gray-500">{{$title->datepublished}}</span> </p>
-
-         
 <br>
           <p class="font-normal text-gray-700 dark:text-gray-400">{{$title->description}}
           </p>
-   
         </div>
       </section>
-      
-<br><br>
-
-
+<form action="/user/collection" method="post" class="inline mt-11">
+  @csrf
+  @method('POST')
+  <input type="hidden" name="bookid" value="{{$title->id}}">
+  <input type="hidden" name="userid" value="{{Auth()->user()->id}}">
+@if (isset($collection->userid) == Auth()->user()->id)
+<button>
+  <input type="hidden" name="data" value="DEL">
+  <input type="hidden" name="collid" value="{{$collection->id}}">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline align-middle">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m3 3 1.664 1.664M21 21l-1.5-1.5m-5.485-1.242L12 17.25 4.5 21V8.742m.164-4.078a2.15 2.15 0 0 1 1.743-1.342 48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185V19.5M4.664 4.664 19.5 19.5" />
+</svg>
+</button>
+  @else
+   <button>
+    <input type="hidden" name="data" value="NEW">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline align-middle">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+</svg>
+</button>
+@endif
+<span class="inline text-sm text-gray-700">
+  @if (isset($savedpost) )
+ {{$savedpost->count()}}
+  @else
+  0
+  @endif
+  user saved this book</span>
+</form>
+<br>
+<br>
 <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
     <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">By reading, we open up the world</h5>
     <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">kids, parents or even students?

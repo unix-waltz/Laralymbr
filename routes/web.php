@@ -29,6 +29,7 @@ Route::middleware(['auth', 'useRole:USER'])->group(function () {
     Route::get('/user/profile/setting/edit', [UserController::class, 'vieweditprofiler']);
     Route::get('/myprofile/{username}', [UserController::class, 'myprofile']);
     Route::post('/user/return', [UserController::class, 'bookreturn']);
+   Route::post('/user/collection', [UserController::class, 'collections']);
     Route::post('/user/profile/setting', [UserController::class, 'profiler']);
 });
 

@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\BorrowModel;
 use App\Models\ReviewsModel;
+use App\Models\CollectionModel;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -32,6 +33,9 @@ class User extends Authenticatable
     public function comments(){
         return $this->hasMany(ReviewsModel::class,'userid', 'id');
             }
+    public function collectionuser(){
+        return $this->hasMany(CollectionModel::class,'userid', 'id');
+    }
     public function borrowedBooks()
     {
         return $this->hasMany(BorrowModel::class);
