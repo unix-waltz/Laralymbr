@@ -172,22 +172,30 @@ return redirect()->back();
     public function allbooks(Request $r)
     { 
         $search = $r->input('search');
-        $books = BookModel::query();
-   
-        if(isset($search)){
-        $books = BookModel::where('title', 'like', '%' . $search . '%')
+        $list = $r->input('listby');
+        $rating = $r->input('rating');
+        $booksQuery = BookModel::query();
+        
+        if (isset($search)) {
+            $booksQuery->where('title', 'like', '%' . $search . '%')
                 ->orWhere('author', 'like', '%' . $search . '%')
                 ->orWhere('datepublished', 'like', '%' . $search . '%')
                 ->orWhere('description', 'like', '%' . $search . '%')
                 ->orWhere('status', 'like', '%' . $search . '%')
                 ->orWhere('publisher', 'like', '%' . $search . '%');
         }
+        
+        $books = $booksQuery->paginate(9);
+        
         foreach ($books as $book) {
-            $book->excerpt = Str::limit($book->description, 100); 
-         }
-        return view('User.allbooks',[
-            "books" => $books->paginate(1),
-            "request" => $search
+            $book->excerpt = Str::limit($book->description, 100);
+        }
+        
+        return view('User.allbooks', [
+            "books" => $books,
+            "request" => $search,
+            'rating' => $rating,
+            'list' => $list,
         ]);
-    
+              
 }}

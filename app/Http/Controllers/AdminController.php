@@ -49,7 +49,7 @@ class AdminController extends Controller
      public function booknew(Request $r){ 
 $valid =  $r->validate([
    "title" => "string|required",
-   "author" => "string|required|unique:books",
+   "author" => "string|required",
    "publisher" => "string|required",
    "category_id" => "required",
    "datepublished" => "string|required",
@@ -130,7 +130,7 @@ return redirect('/admin/dashboard/bookpage');
      }
      public function newcategory(Request $r){
 $valid = $r->validate([
-'category_name' => 'string|required|unique:categories|regex:/^\S*$/u',
+'category_name' => 'string|required|unique:categories',
 ]);
 CategoryModel::create($valid);
 return redirect('/admin/dashboard/bookpage');
