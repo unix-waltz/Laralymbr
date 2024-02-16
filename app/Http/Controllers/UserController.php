@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BorrowModel;
 use App\Models\CollectionModel;
+use App\Models\ContactModel;
 use App\Models\ReviewsModel;
 use App\Models\User;
 use App\Models\BookModel;
@@ -69,6 +70,13 @@ $status = "OK";
     }
 public function contact(){
     return view('User.contact');
+}
+public function __contact($data){
+return view('User.__contact',compact('data'));
+}
+public function _contact(Request $r){
+ContactModel::create($r->all());
+return redirect()->back()->with('success','Message sent successfully! Thank you for your feedback.');
 }
 public function bookbycategory(CategoryModel $category){
     foreach ($category->books as $book) {

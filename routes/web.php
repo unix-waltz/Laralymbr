@@ -18,6 +18,7 @@ Route::post('/login', [AuthController::class, 'Login']);
 Route::middleware(['auth', 'useRole:USER'])->group(function () {
     Route::post('/user/borrow', [UserController::class, 'userborrow']);
     Route::get('/contact', [UserController::class, 'contact']);
+    Route::post('/contact/{data}', [UserController::class, '__contact']);
     Route::get('/', [UserController::class, 'index']);
     Route::get('/product/book/detail/{title:title}', [UserController::class, 'Bookdetail']);
     Route::get('/user/category/{category:category_name}', [UserController::class, 'bookbycategory']);
@@ -32,6 +33,7 @@ Route::middleware(['auth', 'useRole:USER'])->group(function () {
    Route::post('/user/collection', [UserController::class, 'collections']);
     Route::post('/user/profile/setting', [UserController::class, 'profiler']);
     Route::get('/all-books',[UserController::class, 'allbooks']);
+    Route::post('/user/contact',[UserController::class, '_contact']);
 });
 
 Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {

@@ -133,13 +133,13 @@
     <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">kids, parents or even students?
       quality and legal books for everyone..</p>
     <div class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
-        <a href="#" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-           
-            <div class="text-left rtl:text-right">
+        <form action="/contact/{{$title->title}}" method="post" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+           @csrf
+            <button class="text-left rtl:text-right">
                 <div class="mb-1 text-xs">Have any problem?</div>
                 <div class="-mt-1 font-sans text-sm font-semibold">Report</div>
-            </div>
-        </a>
+            </button>
+          </form>
         @if ($title->status == 'canqueued')
         <form action="/user/borrow" method="post" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
           @csrf
