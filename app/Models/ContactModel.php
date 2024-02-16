@@ -9,5 +9,5 @@ class ContactModel extends Model
 {
     use HasFactory;
 protected $table = 'contact';
-protected $guarded =['id'];
+protected $guarded =[ 'id'];
 }
