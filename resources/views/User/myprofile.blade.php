@@ -23,13 +23,13 @@
                       <div class="w-full lg:w-4/12 px-4 lg:order-1">
                         <div class="flex justify-start pt-4 lg:pt-4">
                           <div class="mr-4 p-3 text-center">
-                            <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">22</span><span class="text-sm text-blueGray-400">Friends</span>
+                            <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{{$bookB->count()}}</span><span class="text-sm text-blueGray-400">Books In Borrowed</span>
                           </div>
                           <div class="mr-4 p-3 text-center">
-                            <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">10</span><span class="text-sm text-blueGray-400">Photos</span>
+                            <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{{$bookR->count()}}</span><span class="text-sm text-blueGray-400">Book Returned</span>
                           </div>
                           <div class="lg:mr-4 p-3 text-center">
-                            <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">89</span><span class="text-sm text-blueGray-400">Comments</span>
+                            <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{{$comment->count()}}</span><span class="text-sm text-blueGray-400">Reviews</span>
                           </div>
                         </div>
                       </div>

@@ -72,6 +72,13 @@ $status = "OK";
     public function myprofile(){
         return view('User.myprofile',[
             'active' => '',
+            'bookB' => BorrowModel::where('user_id',Auth()->user()->id)
+            ->where('status', 'borrowed')
+            ->get(),
+            'bookR' => BorrowModel::where('user_id',Auth()->user()->id)
+            ->where('status', 'returned')
+            ->get(),
+            'comment' => ReviewsModel::where('userid',Auth()->user()->id)->get(),
         ]);
     }
     public function about(){
