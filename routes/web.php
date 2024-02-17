@@ -18,6 +18,7 @@ Route::post('/login', [AuthController::class, 'Login']);
 Route::middleware(['auth', 'useRole:USER'])->group(function () {
     Route::post('/user/borrow', [UserController::class, 'userborrow']);
     Route::get('/contact', [UserController::class, 'contact']);
+    Route::get('/about', [UserController::class, 'about']);
     Route::post('/contact/{data}', [UserController::class, '__contact']);
     Route::get('/', [UserController::class, 'index']);
     Route::get('/product/book/detail/{title:title}', [UserController::class, 'Bookdetail']);

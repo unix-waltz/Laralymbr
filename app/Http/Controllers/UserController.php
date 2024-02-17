@@ -68,6 +68,9 @@ $status = "OK";
     public function myprofile(){
         return view('User.myprofile');
     }
+    public function about(){
+        return view('User.about');
+    }
 public function contact(){
     return view('User.contact');
 }
