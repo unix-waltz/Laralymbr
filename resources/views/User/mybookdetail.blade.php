@@ -144,9 +144,6 @@
 
 </div>
 
-@if ($title->status == 'borrowed')
-  @if ($status == "OK")
-    
 
 {{-- comment section --}}
 <section class="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
@@ -157,6 +154,10 @@
     </svg></span></h2>
       
   </div>
+
+@if ($title->status == 'borrowed')
+@if ($status == "OK")
+  
     <form class="mb-6" method="post" action="/user/comment" >
       @method('POST')
       @csrf
@@ -193,6 +194,8 @@
             Post comment
         </button>
     </form>
+    @endif
+@endif
     @foreach ($title->comments->reverse() as $c )
     
   <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900">
@@ -271,6 +274,5 @@
 @endforeach
   </div>
 </section>
-@endif
-@endif
+
 @endsection

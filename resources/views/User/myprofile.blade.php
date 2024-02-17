@@ -55,13 +55,14 @@
                       </h3>
                       <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                         <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                        {{Auth()->user()->address}}
+                        {{'@'.Auth()->user()->username}}
                       </div>
                       <div class=" text-blueGray-600">
-                        <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>{{'@'.Auth()->user()->username}}
+                        <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
+                        {{Auth()->user()->email}}
                       </div>
                       <div class="mb-2 text-blueGray-600">
-                        <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>{{Auth()->user()->email}}
+                        <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>{{Auth()->user()->address}}
                       </div>
                     </div>
                     <div class="mt-10 py-10 border-t border-blueGray-200 text-center">

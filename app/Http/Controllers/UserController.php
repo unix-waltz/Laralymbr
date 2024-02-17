@@ -17,12 +17,13 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     public function index(){
-        $books = BookModel::all();
+        $books = BookModel::take(9)->get();
         foreach ($books as $book) {
             $book->excerpt = Str::limit($book->description, 100); 
          }
         return view('User.index',[
             'books' => $books,
+            'active' => 'home',
         ]);
     }
     public function Bookdetail(BookModel $title){
@@ -42,6 +43,7 @@ $status = "OK";
             ->where('userid',Auth()->user()->id )
             ->first(),
             'savedpost' => CollectionModel::where('bookid', $title->id),
+            'active' => 'home'
         ]);
     }
     public function myBookdetail(BookModel $title){
@@ -56,26 +58,37 @@ $status = "OK";
         return view('User.mybookdetail',[
             'title' => $title,
             'page' => $title->page = Str::limit($title->title, 14),
+            'active' => '',
             "status" => $status,
         ]);
     }
 
     public function myhistory(){
         return view('User.myhistory',[
+            'active' => '',
             "data" => BorrowModel::where('user_id',Auth()->user()->id)->get(),
         ]);
     }
     public function myprofile(){
-        return view('User.myprofile');
+        return view('User.myprofile',[
+            'active' => '',
+        ]);
     }
     public function about(){
-        return view('User.about');
+        return view('User.about',[
+            'active' => 'about'
+        ]);
     }
 public function contact(){
-    return view('User.contact');
+    return view('User.contact',[
+        'active' => 'contact'
+    ]);
 }
 public function __contact($data){
-return view('User.__contact',compact('data'));
+return view('User.__contact',[
+    'active' => 'contact',
+    'data' => $data
+]);
 }
 public function _contact(Request $r){
 ContactModel::create($r->all());
@@ -125,7 +138,8 @@ public function mybooks($username){
         $book->book->excerpt = Str::limit($book->book->description, 90); 
      }
     return view('User.mybooks',[
-        'user' => $user,
+            'active' => '',
+            'user' => $user,
     ]);
 }
 public function comment(Request $r){
@@ -207,6 +221,7 @@ return redirect()->back();
             "request" => $search,
             'rating' => $rating,
             'list' => $list,
+            'active' => 'book'
         ]);
               
 }}
