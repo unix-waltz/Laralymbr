@@ -25,7 +25,7 @@
 </style>
 <br><br>
 <!-- Breadcrumb -->
-<nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 max-w-[23%] mx-auto" aria-label="Breadcrumb">
+<nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 sm:max-w-[23%] w-[80%] mx-auto" aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
       <li class="inline-flex items-center">
         <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
@@ -63,14 +63,14 @@
   </nav>
 
 <div class="mx-auto w-[70%] mt-11">
-    <section class="flex items-center pb-3">
-        <div class="w-[20%]">
+    <section class="sm:flex sm:items-center pb-3">
+        <div class="sm:w-[20%] pb-4 sm:pb-0">
           <a href="#" class="block border border-gray-200 rounded-lg overflow-hidden hover:border-gray-700 dark:border-gray-700">
-            <img class="object-cover w-full h-96" src="{{asset('storage/'.$title->thumbnail)}}" alt="">
+            <img class="object-cover h-full" src="{{asset('storage/'.$title->thumbnail)}}" alt="">
           </a>
         </div>
       
-        <div href="#" class="ml-16 h-full w-[80%] block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div href="#" class="mx-auto sm:ml-3 ml-16 h-full sm:w-[80%] block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{$title->title}}</h5>
           @if ($title->status == 'canqueued')
           <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
@@ -160,132 +160,134 @@
 
 
 {{-- comment section --}}
-<section class="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
-  <div class="max-w-2xl mx-auto px-4">
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Comments ({{$title->comments->count()}}) <span class="text-base text-gray-500">{{number_format($title->comments->avg('rating'),1)}}  <svg class="w-4 h-4 text-yellow-300 ms-1 inline" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-      </svg></span></h2>
-        
-    </div>
-    @if ($title->status == 'borrowed')
-  @if ($status == "OK")
-    
-    <form class="mb-6" method="post" action="/user/comment" >
-      @method('POST')
-      @csrf
-      <input type="hidden" name="bookid" value="{{$title->id}}"> 
-      <input type="hidden" name="userid" value="{{Auth()->user()->id}}">
-      <div class="ml-2 mb-3 rating-box">
-  
-        <div class="stars">
-          <i class="fa-solid fa-star"><input type="radio" class="opacity-0 relative right-4" name="rating" value="1"> </i>
-          <i class="fa-solid fa-star"><input type="radio" class="opacity-0 relative right-4" name="rating" value="2"> </i>
-          <i class="fa-solid fa-star"><input type="radio" class="opacity-0 relative right-4" name="rating" value="3"> </i>
-          <i class="fa-solid fa-star"><input type="radio" class="opacity-0 relative right-4" name="rating" value="4"> </i>
-          <i class="fa-solid fa-star"><input type="radio" class="opacity-0 relative right-4" name="rating" value="5"> </i>
-        </div>
+<div class="w-full overflow-hidden">
+  <section class="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
+    <div class="max-w-2xl mx-auto px-4">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Comments ({{$title->comments->count()}}) <span class="text-base text-gray-500">{{number_format($title->comments->avg('rating'),1)}}  <svg class="w-4 h-4 text-yellow-300 ms-1 inline" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+        </svg></span></h2>
+          
       </div>
-      <script>
-        const stars = document.querySelectorAll(".stars i");
-      stars.forEach((star, index1) => {
-        star.addEventListener("click", () => {
-          stars.forEach((star, index2) => {
-            index1 >= index2 ? star.classList.add("active") : star.classList.remove("active");
+      @if ($title->status == 'borrowed')
+    @if ($status == "OK")
+      
+      <form class="mb-6" method="post" action="/user/comment" >
+        @method('POST')
+        @csrf
+        <input type="hidden" name="bookid" value="{{$title->id}}"> 
+        <input type="hidden" name="userid" value="{{Auth()->user()->id}}">
+        <div class="ml-2 mb-3 rating-box">
+    
+          <div class="stars">
+            <i class="fa-solid fa-star"><input type="radio" class="opacity-0 relative right-4" name="rating" value="1"> </i>
+            <i class="fa-solid fa-star"><input type="radio" class="opacity-0 relative right-4" name="rating" value="2"> </i>
+            <i class="fa-solid fa-star"><input type="radio" class="opacity-0 relative right-4" name="rating" value="3"> </i>
+            <i class="fa-solid fa-star"><input type="radio" class="opacity-0 relative right-4" name="rating" value="4"> </i>
+            <i class="fa-solid fa-star"><input type="radio" class="opacity-0 relative right-4" name="rating" value="5"> </i>
+          </div>
+        </div>
+        <script>
+          const stars = document.querySelectorAll(".stars i");
+        stars.forEach((star, index1) => {
+          star.addEventListener("click", () => {
+            stars.forEach((star, index2) => {
+              index1 >= index2 ? star.classList.add("active") : star.classList.remove("active");
+            });
           });
         });
-      });
-      </script>
-        <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-            <label for="comment" class="sr-only">Your comment</label>
-            <textarea id="comment" rows="6" name='review'
-                class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
-                placeholder="Write a comment..." required></textarea>
-        </div>
-        <button type="submit"
-            class="inline-flex items-center py-2 px-3 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-            Post comment
-        </button>
-    </form>
-    @endif
-@endif
-    @foreach ($title->comments->reverse() as $c )
-    
-  <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900">
-    
-        <footer class="flex justify-between items-center mb-2">
-            <div class="flex items-center">
-                <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
-                        class="mr-2 w-6 h-6 rounded-full"
-                        src="{{ asset('storage/' . $c->userComents->profilephoto) }}"
-                        alt="Michael Gough">{{$c->userComents->fullname}}
-                        <span class="text-sm text-gray-500">
-                          @if ($c->userid == Auth()->user()->id)
-                            &nbsp; {{'( You )'}}
-                          @endif
-                        </span>
-                      </p>
-                <p class="text-xs  hover:italic text-gray-600 dark:text-gray-400">{{$c->commented_at}}</p>
-            </div>
-            <button id="dropdownComment{{$c->id}}Button" data-dropdown-toggle="dropdownComment{{$c->id}}"
-              class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-              type="button">
-              <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                  <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
-              </svg>
-              <span class="sr-only">Comment settings</span>
+        </script>
+          <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+              <label for="comment" class="sr-only">Your comment</label>
+              <textarea id="comment" rows="6" name='review'
+                  class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
+                  placeholder="Write a comment..." required></textarea>
+          </div>
+          <button type="submit"
+              class="inline-flex items-center py-2 px-3 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+              Post comment
           </button>
-          <!-- Dropdown menu -->
-          <div id="dropdownComment{{$c->id}}"
-              class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                    aria-labelledby="dropdownMenuIconHorizontalButton">
-                    @if ($c->userid == Auth()->user()->id)
-                     <li>
-                      <a href="/user/comment/delete/{{$c->id}}"
-                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
-                  </li>
-                    @else
-                      <li>
-                        <a href="#"
-                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                    </li>
-                    @endif
-                </ul>
-            </div>
-        </footer>
-<div class="flex items-center">
-
-<svg class="w-4 h-4  {{$c->rating >= 1 ? 'text-yellow-300' : 'text-gray-300' }} ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-  </svg>
-  <svg class="w-4 h-4  {{$c->rating >= 2 ? 'text-yellow-300' : 'text-gray-300' }}  ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-  </svg>
-  <svg class="w-4 h-4  {{$c->rating >= 3 ? 'text-yellow-300' : 'text-gray-300' }}  ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-  </svg>
-  <svg class="w-4 h-4  {{$c->rating >= 4 ? 'text-yellow-300' : 'text-gray-300' }}  ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-  </svg>
-  <svg class="w-4 h-4 ms-1  {{$c->rating >= 5 ? 'text-yellow-300' : 'text-gray-300' }}  dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-  </svg>
-</div>
-
-        <p class="text-gray-500 dark:text-gray-400">{{$c->review}}</p>
-        <div class="flex items-center mt-4 space-x-4">
-            <button type="button"
-                class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400 font-medium">
-                <svg class="mr-1.5 w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
+      </form>
+      @endif
+  @endif
+      @foreach ($title->comments->reverse() as $c )
+      
+    <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900">
+      
+          <footer class="flex justify-between items-center mb-2">
+              <div class="flex items-center">
+                  <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
+                          class="mr-2 w-6 h-6 rounded-full"
+                          src="{{ asset('storage/' . $c->userComents->profilephoto) }}"
+                          alt="Michael Gough">{{$c->userComents->fullname}}
+                          <span class="text-sm text-gray-500">
+                            @if ($c->userid == Auth()->user()->id)
+                              &nbsp; {{'( You )'}}
+                            @endif
+                          </span>
+                        </p>
+                  <p class="text-xs  hover:italic text-gray-600 dark:text-gray-400">{{$c->commented_at}}</p>
+              </div>
+              <button id="dropdownComment{{$c->id}}Button" data-dropdown-toggle="dropdownComment{{$c->id}}"
+                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                type="button">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                    <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
                 </svg>
-                Reply
+                <span class="sr-only">Comment settings</span>
             </button>
-        </div>
-    </article>
-@endforeach
+            <!-- Dropdown menu -->
+            <div id="dropdownComment{{$c->id}}"
+                class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="dropdownMenuIconHorizontalButton">
+                      @if ($c->userid == Auth()->user()->id)
+                       <li>
+                        <a href="/user/comment/delete/{{$c->id}}"
+                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
+                    </li>
+                      @else
+                        <li>
+                          <a href="#"
+                              class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
+                      </li>
+                      @endif
+                  </ul>
+              </div>
+          </footer>
+  <div class="flex items-center">
+  
+  <svg class="w-4 h-4  {{$c->rating >= 1 ? 'text-yellow-300' : 'text-gray-300' }} ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+    </svg>
+    <svg class="w-4 h-4  {{$c->rating >= 2 ? 'text-yellow-300' : 'text-gray-300' }}  ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+    </svg>
+    <svg class="w-4 h-4  {{$c->rating >= 3 ? 'text-yellow-300' : 'text-gray-300' }}  ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+    </svg>
+    <svg class="w-4 h-4  {{$c->rating >= 4 ? 'text-yellow-300' : 'text-gray-300' }}  ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+    </svg>
+    <svg class="w-4 h-4 ms-1  {{$c->rating >= 5 ? 'text-yellow-300' : 'text-gray-300' }}  dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+    </svg>
   </div>
-</section>
+  
+          <p class="text-gray-500 dark:text-gray-400">{{$c->review}}</p>
+          <div class="flex items-center mt-4 space-x-4">
+              <button type="button"
+                  class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400 font-medium">
+                  <svg class="mr-1.5 w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
+                  </svg>
+                  Reply
+              </button>
+          </div>
+      </article>
+  @endforeach
+    </div>
+  </section>
+</div>
 
 @endsection
