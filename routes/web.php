@@ -35,6 +35,7 @@ Route::middleware(['auth', 'useRole:USER'])->group(function () {
     Route::post('/user/profile/setting', [UserController::class, 'profiler']);
     Route::get('/all-books',[UserController::class, 'allbooks']);
     Route::post('/user/contact',[UserController::class, '_contact']);
+    Route::get('/user/book/author/{author}',[UserController::class,'byAuthor']);
 });
 
 Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {

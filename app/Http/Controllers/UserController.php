@@ -230,6 +230,13 @@ return redirect()->back();
             'rating' => $rating,
             'list' => $list,
             'active' => 'book'
-        ]);
-              
-}}
+        ]);          
+}
+public function byAuthor($author){
+return view('User.byauthor',[
+    'active' => '',
+    'data' => $author,
+    'books' => BookModel::where('author', $author)->get(),
+]);
+}
+}

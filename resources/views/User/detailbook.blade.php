@@ -89,7 +89,7 @@
         </span>
         @endif
         <span class="normal hover:italic hover:text-sky-600 text-gray-500"># <a href="/user/category/{{$title->category->category_name}}"> {{$title->category->category_name}}</a></span>
-           <p class="text-sky-600" >{{$title->author}}</p>
+        <br><a href="/user/book/author/{{$title->author}}" class="text-sky-600 hover:italic" >{{$title->author}}</a>
            <p class="text-black text-sm" >Publisher :  <span class="normal hover:italic text-gray-500">{{$title->publisher}}</span> </p>
            <p class="text-black text-sm" >Date Published :  <span class="normal hover:italic text-gray-500">{{$title->datepublished}}</span> </p>
 <br>
