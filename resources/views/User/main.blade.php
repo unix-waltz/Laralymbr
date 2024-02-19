@@ -16,7 +16,7 @@
         <a href="https://unix-waltz.github.io" class="flex items-center space-x-3 rtl:space-x-reverse">
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Laralymbr</span>
         </a>
-        <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">  <span class="block text-sm text-gray-900 dark:text-white">{{auth()->user()->fullname}}</span> &nbsp;&nbsp;&nbsp;
+        <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">  <span class="hidden sm:block text-sm text-gray-900 dark:text-white">{{auth()->user()->fullname}}</span> &nbsp;&nbsp;&nbsp;
             <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
               <span class="sr-only">Open user menu</span>
               <img class="w-8 h-8 rounded-full" src="{{ asset('storage/' . Auth()->user()->profilephoto) }}" alt="user photo">

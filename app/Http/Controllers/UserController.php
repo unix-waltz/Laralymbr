@@ -107,6 +107,7 @@ public function bookbycategory(CategoryModel $category){
      }
     return view('User.bookscategory',[
         'data' => $category,
+        'active' => ''
     ]);
 }
 public function userborrow(Request $r){

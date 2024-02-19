@@ -220,7 +220,7 @@
                           class="mr-2 w-6 h-6 rounded-full"
                           src="{{ asset('storage/' . $c->userComents->profilephoto) }}"
                           alt="Michael Gough">{{$c->userComents->fullname}}
-                          <span class="text-sm text-gray-500">
+                          <span class="sm:text-sm text-xs text-gray-500">
                             @if ($c->userid == Auth()->user()->id)
                               &nbsp; {{'( You )'}}
                             @endif

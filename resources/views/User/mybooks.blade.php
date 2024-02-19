@@ -8,7 +8,7 @@
   @if ($b->status == 'borrowed' &&  $b->book->status == 'borrowed')
 
 
-        <a href="/mybook/detail/{{$b->book->title}}" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <a href="/mybook/detail/{{$b->book->title}}" class="overflow-hidden flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
               <img class="object-cover h-full rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{asset('storage/'.$b->book->thumbnail)}}" alt="">
               <div class="flex flex-col justify-between p-4 leading-normal">
                   <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{$b->book->title}}</h5>
@@ -36,18 +36,17 @@
         </div>
 
         <h1 class="ml-10 mt-10 text-4xl font-semibold">My Collections</h1>
-<div class="grid grid-cols-2 sm:grid-cols-3 w-[90%] mx-auto mt-11 gap-3">
+<div class="grid grid-cols-3  sm:grid-cols-3 w-[90%] mx-auto mt-11 gap-3">
   @foreach ($user->collectionuser as $b )
-        <a href="/mybook/detail/{{$b->bookcollection->title}}" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-              <img class="object-cover h-full rounded-t-lg  md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{asset('storage/'.$b->bookcollection->thumbnail)}}" alt="">
-              <div class="flex flex-col justify-between p-4 leading-normal">
-                  <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{$b->bookcollection->title}}</h5>
-                  <p class="mb-3 font-normal text-xs text-gray-700 dark:text-gray-400">{{$b->bookcollection->excerpt}}</p>
-                 <div class="flex item-center">
+        <a href="/mybook/detail/{{$b->bookcollection->title}}" class="overflow-hidden flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+              <img class="object-cover h-full sm:h-auto sm:w-full rounded-t-lg  md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{asset('storage/'.$b->bookcollection->thumbnail)}}" alt="">
+              <div class="sm:flex hidden flex-col justify-between p-4 leading-normal">
+                  <h5 class="hidden sm:block mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{$b->bookcollection->title}}</h5>
+                 <div class="hidden sm:flex item-center">
                   <svg class="w-4 h-4 ms-1 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                       <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                   </svg>
-                  <p class="ms-2 text-sm font-bold text-gray-900 dark:text-white">      
+                  <p class="hidden sm:block ms-2 text-sm font-bold text-gray-900 dark:text-white">      
                                   @if ($b->bookcollection->comments->isNotEmpty())
                     {{number_format($b->bookcollection->comments->avg('rating'),1)}}
                   @endif
