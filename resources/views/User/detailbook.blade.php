@@ -248,8 +248,10 @@
                     </li>
                       @else
                         <li>
-                          <a href="#"
-                              class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
+                          <form action="/contact/{{'@'.$c->userComents->username}}" method="post" class="w-full sm:w-auto bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg inline-flex items-center justify-center px-4 py-2.5  dark:focus:ring-gray-700">
+                            @csrf
+                            <button class="bg-white text-black">Report</button>
+                          </form>
                       </li>
                       @endif
                   </ul>
