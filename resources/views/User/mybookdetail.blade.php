@@ -66,7 +66,7 @@
     <section class="sm:flex sm:items-center pb-3">
         <div class="sm:w-[20%] pb-4 sm:pb-0">
           <a href="#" class="block border border-gray-200 rounded-lg overflow-hidden hover:border-gray-700 dark:border-gray-700">
-            <img class="object-cover h-full" src="{{asset('storage/'.$title->thumbnail)}}" alt="">
+            <img class="object-cover w-full sm:h-full" src="{{asset('storage/'.$title->thumbnail)}}" alt="">
           </a>
         </div>
       
@@ -90,7 +90,7 @@
         @endif
         <span class="normal hover:italic hover:text-sky-600 text-gray-500"># <a href="/user/category/{{$title->category->category_name}}"> {{$title->category->category_name}}</a></span>
           <br> <a href="/user/book/author/{{$title->author}}" class="text-sky-600 hover:italic" >{{$title->author}}</a>
-           <p class="text-black text-sm" >Publisher :  <span class="normal hover:italic text-gray-500">{{$title->publisher}}</span> </p>
+          <br><a href="/user/book/publisher/{{$title->publisher}}" class="text-black text-sm" >Publisher :  <span class="normal hover:italic text-gray-500">{{$title->publisher}}</span> </a>
            <p class="text-black text-sm" >Date Published :  <span class="normal hover:italic text-gray-500">{{$title->datepublished}}</span> </p>
 <br>
           <p class="font-normal text-gray-700 dark:text-gray-400">{{$title->description}}

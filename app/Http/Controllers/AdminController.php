@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\ContactModel;
 use App\Models\User;
 use App\Models\BookModel;
 use Illuminate\Support\Str;
@@ -267,5 +268,11 @@ return view('Admin.search',[
    "active" => 'book',
    "search" => $search,
 ]);
+}
+public function massege(){
+   return view('Admin.massage',[
+      'active' => 'massage',
+      'data' => ContactModel::all(),
+   ]);
 }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\BookModel;
 use Illuminate\Support\Str;
+use App\Models\ContactModel;
 use Illuminate\Http\Request;
 use App\Models\CategoryModel;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -47,6 +48,12 @@ class OfficerController extends Controller
          'category' => $category,
       ]);
      }
+     public function massege(){
+      return view('Admin.massage',[
+         'active' => 'massage',
+         'data' => ContactModel::all(),
+      ]);
+   }
      public function booknew(Request $r){ 
 $valid =  $r->validate([
    "title" => "string|required",

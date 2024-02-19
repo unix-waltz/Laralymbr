@@ -46,6 +46,8 @@
           <form class="">
             @if (isset($request))
     <input type="hidden" name="search" value="{{$request}}">
+    @else
+    <input type="hidden" name="search" value="{{' '}}">
         @endif
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">    
               <div class="flex flex-col">

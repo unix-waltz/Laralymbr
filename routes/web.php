@@ -36,6 +36,7 @@ Route::middleware(['auth', 'useRole:USER'])->group(function () {
     Route::get('/all-books',[UserController::class, 'allbooks']);
     Route::post('/user/contact',[UserController::class, '_contact']);
     Route::get('/user/book/author/{author}',[UserController::class,'byAuthor']);
+    Route::get('/user/book/publisher/{publisher}',[UserController::class,'byPublisher']);
 });
 
 Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
@@ -63,6 +64,7 @@ Route::middleware(['auth', 'useRole:ADMIN'])->group(function () {
     Route::get('/admin/dashboard/setting/edit', [AdminController::class, 'viewprofiler']);
     Route::post('/admin/dashboard/setting', [AdminController::class, 'profiler']);
     Route::get('/admin/search', [AdminController::class, 'search']);
+    Route::get('/admin/dashboard/massage', [AdminController::class, 'massege']);
 });
 
 Route::middleware(['auth', 'useRole:OFFICER'])->group(function () {
@@ -89,6 +91,7 @@ Route::middleware(['auth', 'useRole:OFFICER'])->group(function () {
     Route::get('/officer/dashboard/setting', [OfficerController::class, 'setting']);
     Route::get('/officer/dashboard/setting/edit', [OfficerController::class, 'viewprofiler']);
     Route::post('/officer/dashboard/setting', [OfficerController::class, 'profiler']);
+    Route::get('/officer/dashboard/massage', [OfficerController::class, 'massege']);
     Route::get('/officer/search', [OfficerController::class, 'search']);
 });
 
