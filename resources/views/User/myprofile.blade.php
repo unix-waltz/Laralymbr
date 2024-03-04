@@ -1,7 +1,7 @@
 @extends('User.main')
 @section('content')
 
-<section class=" dark:bg-gray-900">
+<section class="">
     <div class="max-w-[100%] px-4 py-8 mx-auto lg:py-16">
         
 
