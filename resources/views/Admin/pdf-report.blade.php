@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title>Admin Dashboard</title>
   @vite('resources/css/app.css')
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"  rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"  rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> --}}
 </head>
 <body>
 
@@ -74,7 +74,7 @@
               </tr>
               <tr class="bg-white">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                  Books Can Borrowed
+                  Books in Borrowed
                 </th>
                 <td class="px-6 py-4">
                    {{$totalBorrowedBooks}}
@@ -87,7 +87,7 @@
 
             <tr class="bg-white ">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                   Books in Borrowed
+                   Books Can Borrowed
                 </th>
                 <td class="px-6 py-4">
                    {{$totalQueuedBooks}}
@@ -100,7 +100,7 @@
                 </tbody>
       </table>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script> --}}
 </div>
 </body>
 </html>    

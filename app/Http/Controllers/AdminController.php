@@ -14,12 +14,15 @@ use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller
 {
    public function dashboard(){
+      
     return view('Admin.index',[
       'active' => "dashboard",
       'nbook' => BookModel::all()->where('status', 'borrowed')->count(),
       'okbook'  => BookModel::all()->where('status', 'canqueued')->count(),
       'book' => BookModel::all()->count(),
-      'user' => User::all()->count(),
+      'user' => User::where('role','USER')->count(),
+      '_books' =>BookModel::orderBy('created_at', 'desc')->paginate(5),
+      '_users' =>User::where('role','USER')->orderBy('created_at', 'desc')->paginate(5),
    ]);
    }
    public function bookview(){
@@ -159,10 +162,10 @@ return view('Admin.categoryedit',[
       $data = [
          'book' => BookModel::all()->count(),
          'category' => CategoryModel::all()->count(),
-         'user' => User::all()->where('role', 'USER')->count(),
+         'user' => User::where('role', 'USER')->count(),
          'by' => 'Admin',
-         'totalBorrowedBooks' => BookModel::all()->where('status', 'borrowed')->count(),
-         'totalQueuedBooks' => BookModel::all()->where('status', 'canqueued')->count(),
+         'totalBorrowedBooks' => BookModel::where('status', 'borrowed')->count(),
+         'totalQueuedBooks' => BookModel::where('status', 'canqueued')->count(),
       ];
       $pdf = Pdf::loadView('Admin.pdf-report', $data);
     return $pdf->download(now()->format('Y-m-d').' -admin-report.pdf');

@@ -21,6 +21,8 @@ class OfficerController extends Controller
       'okbook'  => BookModel::all()->where('status', 'canqueued')->count(),
       'book' => BookModel::all()->count(),
       'user' => User::all()->count(),
+      '_books' =>BookModel::orderBy('created_at', 'desc')->paginate(5),
+      '_users' =>User::where('role','USER')->orderBy('created_at', 'desc')->paginate(5),
    ]);
    }
    public function bookview(){
@@ -102,7 +104,7 @@ public function formupdatebook(Request $r){
          $valid['thumbnail'] = $r->file('thumbnail')->store('thumbnail');
          }
          $model->update($valid);
-         return redirect('/Officer/book/detail/'.$r->id);
+         return redirect('/officer/book/detail/'.$r->id);
       }
 }
 
@@ -160,16 +162,16 @@ return view('Officer.categoryedit',[
       ]);
       $model = CategoryModel::find($r->id);
       $model->update($valid);
-      return redirect('/Officer/book/category/'.$valid['category_name']);
+      return redirect('/officer/book/category/'.$valid['category_name']);
      }
      public function reportpdf(){
       $data = [
          'book' => BookModel::all()->count(),
          'category' => CategoryModel::all()->count(),
-         'user' => User::all()->where('role', 'USER')->count(),
+         'user' => User::where('role', 'USER')->count(),
          'by' => 'Officer',
-         'totalBorrowedBooks' => BookModel::all()->where('status', 'borrowed')->count(),
-         'totalQueuedBooks' => BookModel::all()->where('status', 'canqueued')->count(),
+         'totalBorrowedBooks' => BookModel::where('status', 'borrowed')->count(),
+         'totalQueuedBooks' => BookModel::where('status', 'canqueued')->count(),
       ];
       $pdf = Pdf::loadView('Officer.pdf-report', $data);
     return $pdf->download(now()->format('Y-m-d').' -Officer-report.pdf');
@@ -191,11 +193,11 @@ return view('Officer.categoryedit',[
  
 public function unofficer(User $id){
 $id->update(['role'=> 'USER']);
-return redirect('/Officer/dashboard/account');
+return redirect('/officer/dashboard/account');
 }
 public function deleteuser(User $id){
    $id->delete();
-   return redirect('/Officer/dashboard/account/alluser');
+   return redirect('/officer/dashboard/account/alluser');
 }
 public function setting(){
    return view('Officer.setting',[
