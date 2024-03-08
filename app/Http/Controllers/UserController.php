@@ -18,7 +18,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $books = BookModel::take(9)->get();
+        $books = BookModel::with('reviews')->take(9)->get();
         foreach ($books as $book) {
             $book->excerpt = Str::limit($book->description, 100);
         }
@@ -74,7 +74,7 @@ class UserController extends Controller
     {
         return view('User.myhistory', [
             'active' => '',
-            "data" => BorrowModel::where('user_id', Auth()->user()->id)->get(),
+            "data" => BorrowModel::with('book')->where('user_id', Auth()->user()->id)->get(),
         ]);
     }
     public function myprofile()
@@ -259,7 +259,7 @@ class UserController extends Controller
         return view('User.bypublisherandauthor', [
             'active' => 'Author',
             'data' => $author,
-            'books' => BookModel::where('author', $author)->get(),
+            'books' => BookModel::with('comments')->where('author', $author)->get(),
         ]);
     }
     public function byPublisher($publisher)
@@ -267,7 +267,7 @@ class UserController extends Controller
         return view('User.bypublisherandauthor', [
             'active' => 'Publisher',
             'data' => $publisher,
-            'books' => BookModel::where('publisher', $publisher)->get(),
+            'books' => BookModel::with('comments')->where('publisher', $publisher)->get(),
         ]);
     }
 }
