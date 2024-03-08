@@ -140,21 +140,71 @@
         </ul>
       </div>
     </div>
-    <section class="">
-      <div class="grid grid-cols-4 mt-11 gap-3">
-  @foreach ($books as $b)
-    
+    <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
+      <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
+        <div class="px-6 py-5 font-semibold border-b border-gray-100">New Books has borrowed.</div>
   
-        <a href="/officer/book/detail/{{$b->id}}" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 ">
-            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{ asset('storage/' . $b->thumbnail) }}" alt="">
-            <div class="flex flex-col justify-between p-4 leading-normal">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{{$b->title}}</h5>
-                <p class="mb-3 font-normal text-sm text-gray-700 ">{{$b->excerpt}}</p>
-            </div>
-        </a>
-        @endforeach
-                                                          
+        <div class="overflow-y-auto" style="max-height: 24rem;">
+          <ul class="p-6 space-y-6">
+            @foreach ($_books_borrowed as $c )
+              <li class="flex items-center">
+         <h1>-</h1>
+              <a href="/officer/book/detail/{{$c->book->id}}" class="text-gray-600 font-semibold">{{$c->book->title}}<span style="" class="font-normal">&nbsp;by {{$c->user->username}}</span></a>
+              <span class="ml-auto font-semibold">
+              
+                {{$c->created_at->diffForHumans()}}
+             
+              </span>
+            </li>
+            @endforeach
+          </ul>
+        </div>
       </div>
+      <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
+        <div class="px-6 py-5 font-semibold border-b border-gray-100">New Books has returned.</div>
+  
+        <div class="overflow-y-auto" style="max-height: 24rem;">
+          <ul class="p-6 space-y-6">
+            @foreach ($_books_returned as $c )
+            <li class="flex items-center">
+       <h1>-</h1>
+            <a href="/officer/book/detail/{{$c->book->id}}" class="text-gray-600 font-semibold">{{$c->book->title}}<span style="" class="font-normal">&nbsp;by {{$c->user->username}}</span></a>
+            <span class="ml-auto font-semibold">
+            
+              {{$c->created_at->diffForHumans()}}
+           
+            </span>
+          </li>
+          @endforeach
+          </ul>
+        </div>
+      </div>
+  
+    </section>
+    <section class="">
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 mx-auto mt-11 gap-3 ">
+        @foreach ($books as $b )
+        
+              <a href="/officer/book/detail/{{$b->id}}" class=" flex flex-col items-center bg-white border overflow-hidden border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 ">
+                    <img class=" object-cover w-full rounded-t-lg  md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{asset('storage/'.$b->thumbnail)}}" alt="">
+                    <div class="flex flex-col  justify-between p-4 leading-normal">
+                        <h5 class="mb-2 sm:text-2xl text-base font-bold tracking-tight text-gray-900">{{$b->title}}</h5>
+                        <p class="mb-3 font-normal hidden sm:block text-xs text-gray-700  ">{{$b->excerpt}}</p>
+                       <div class="flex item-center">
+                        
+                        <svg class="w-4 h-4 ms-1 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                        </svg>
+                        <p class="ms-2 sm:text-sm text-xs font-bold text-gray-900">{{number_format($b->comments->avg('rating'),1)}}</p>
+            <span class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full "></span>
+            <p class="text-xs sm:text-sm font-medium text-gray-900 underline hover:no-underline"> {{$b->comments->count()}} reviews</p>
+        
+                       </div>
+                    </div>
+                    
+                </a>
+        @endforeach
+              </div>
     </section>
 </main>
 @endsection

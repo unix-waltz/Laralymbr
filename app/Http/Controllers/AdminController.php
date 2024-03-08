@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\BorrowModel;
 use App\Models\ContactModel;
 use App\Models\User;
 use App\Models\BookModel;
@@ -41,6 +42,8 @@ class AdminController extends Controller
       'borrowedbooks' => $totalBorrowedBooks,
       'canqueuedbooks' => $totalQueuedBooks,
       'category' => $category,
+      '_books_borrowed' =>BorrowModel::where('status','borrowed')->orderBy('created_at', 'desc')->paginate(5),
+      '_books_returned' =>BorrowModel::where('status','returned')->orderBy('created_at', 'desc')->paginate(5),
       ]);
      }
      public function newbookview(){
