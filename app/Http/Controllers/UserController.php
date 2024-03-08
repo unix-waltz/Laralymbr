@@ -63,6 +63,10 @@ class UserController extends Controller
             'page' => $title->page = Str::limit($title->title, 14),
             'active' => '',
             "status" => $status,
+            'collection' => CollectionModel::where('bookid', $title->id)
+                ->where('userid', Auth()->user()->id)
+                ->first(),
+            'savedpost' => CollectionModel::where('bookid', $title->id),
         ]);
     }
 
