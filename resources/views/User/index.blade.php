@@ -41,13 +41,13 @@
 
 
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 w-[85%] mx-auto mt-11 gap-3 ">
+      <div class="grid grid-cols-2 lg:grid-cols-3 xl:w-[85%] w-[95%] mx-auto mt-11 gap-3 ">
 @foreach ($books as $b )
 
       <a href="/product/book/detail/{{$b->title}}" class=" flex flex-col items-center bg-white border overflow-hidden border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 ">
             <img class=" object-cover w-full rounded-t-lg  md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{asset('storage/'.$b->thumbnail)}}" alt="">
             <div class="flex flex-col  justify-between p-4 leading-normal">
-                <h5 class="mb-2 sm:text-2xl text-base font-bold tracking-tight text-gray-900">{{$b->title}}</h5>
+                <h5 class="mb-2 2xl:text-2xl text-base font-bold tracking-tight text-gray-900">{{$b->title}}</h5>
                 <p class="mb-3 font-normal hidden sm:block text-xs text-gray-700  ">{{$b->excerpt}}</p>
                <div class="flex item-center">
                 

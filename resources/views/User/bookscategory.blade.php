@@ -1,7 +1,7 @@
 @extends('User.main')
 @section('content')
 <br><br>
-<nav class="fflex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50   sm:max-w-[23%] w-[80%] mx-auto" aria-label="Breadcrumb">
+<nav class="fflex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50   w-1/2 mx-auto" aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
       <li class="inline-flex items-center">
         <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 ">
@@ -39,12 +39,12 @@
   </nav>
 
 <section class="p-6 sm:p-10 space-y-6">
-      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 w-[85%] mx-auto mt-11 gap-3">
+      <div class="grid grid-cols-2 lg:grid-cols-3 xl:w-[85%] w-[95%] mx-auto mt-11 gap-3">
 @foreach ($data->books as $b )
       <a href="/product/book/detail/{{$b->title}}" class="flex flex-col items-center bg-white border overflow-hidden border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 ">
             <img class="object-cover w-full h-[100%] rounded-t-lg  md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{asset('storage/'.$b->thumbnail)}}" alt="">
             <div class="flex flex-col justify-between p-4 leading-normal">
-                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{$b->title}}</h5>
+                <h5 class="mb-2 2xl:text-2xl text-base font-bold tracking-tight text-gray-900">{{$b->title}}</h5>
                 <p class="mb-3 text-sm font-normal text-gray-700 ">{{$b->excerpt}}</p>
                 <div class="flex item-center">
                   <svg class="w-4 h-4 ms-1 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">

@@ -25,7 +25,7 @@
 </style>
 <br><br>
 <!-- Breadcrumb -->
-<nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50  sm:max-w-[23%] w-[80%] mx-auto" aria-label="Breadcrumb">
+<nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50  w-1/3 mx-auto" aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
       <li class="inline-flex items-center">
         <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
@@ -63,14 +63,14 @@
   </nav>
 
 <div class="mx-auto w-[70%] mt-11">
-    <section class="sm:flex sm:items-center pb-3">
-        <div class="sm:w-[20%] pb-4 sm:pb-0">
+    <section class="md:flex md:items-center pb-3">
+        <div class="2xl:w-[20%] md:w-1/2 pb-4 2xl:pb-0">
           <a href="#" class="block border border-gray-200 rounded-lg overflow-hidden hover:border-gray-700">
-            <img class="object-cover w-full sm:h-full" src="{{asset('storage/'.$title->thumbnail)}}" alt="">
+            <img class="object-cover w-full 2xl:h-full" src="{{asset('storage/'.$title->thumbnail)}}" alt="">
           </a>
         </div>
       
-        <div href="#" class="mx-auto sm:ml-3 ml-16 h-full sm:w-[80%] block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100   ">
+        <div href="#" class="mx-auto md:ml-3 h-full md:w-[80%] block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100   ">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{$title->title}}</h5>
           @if ($title->status == 'canqueued')
           <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full ">

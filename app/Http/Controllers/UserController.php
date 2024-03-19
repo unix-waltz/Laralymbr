@@ -18,7 +18,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $books = BookModel::with('reviews')->take(9)->get();
+        $books = BookModel::take(9)->get();
         foreach ($books as $book) {
             $book->excerpt = Str::limit($book->description, 100);
         }
