@@ -94,12 +94,17 @@ Revisi ini bertujuan untuk menciptakan struktur basis data yang lebih fleksibel,
 
 1. **Prasyarat**: Pastikan Anda memiliki PHP, Composer, dan MySQL terinstal di komputer Anda dengan versi yg memadai (Disarankan Untuk Mengunakan versi yang paling baru).
 2. **Clone Repositori**: `git clone https://github.com/unix-waltz/Laralymbr.git`
-3. **Install Dependencies**: `composer install`
-4. **Setup Database**: 
+3. **Masuk Ke Direktori**: `cd Laralymbr`
+4. **Install Dependencies**: `composer install `/` composer update`
+5. **Setup Database**: 
     - Buat file `.env` dari file `.env.example` dan sesuaikan pengaturan database Anda.
-    - Jalankan migrasi: `php artisan migrate`
-5. **Mulai Server**: `php artisan serve`
-6. **Akses Aplikasi**: Buka browser dan kunjungi `http://localhost:8000`.
+    - Tambahkan :`ADMIN_USERNAME=''
+                  ADMIN_EMAIL=''
+                  ADMIN_PASSWORD=''`
+    -Jalankan : `php artisan storage:link`
+    - Jalankan migrasi: `php artisan migrate --seed`/`php artisan migrate:fresh --seed`
+6. **Mulai Server**: `php artisan serve`
+7. **Akses Aplikasi**: Buka browser dan kunjungi `http://localhost:8000`.
 
 ## Lisensi
 
