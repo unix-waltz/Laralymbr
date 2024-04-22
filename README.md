@@ -10,11 +10,11 @@ https://github.com/unix-waltz/Laralymbr/assets/106463487/0964f79f-526a-42a2-b41d
 
 ## Utility & Framework
 
-1. **Laravel**: Framework PHP yang kuat, menyatukan backend dan frontend secara sinergis.
-2. **Tailwind CSS**: Kerangka kerja CSS yang memungkinkan desain responsif dan menarik.
-3. **Flowbyte**: Platform aliran kerja yang memfasilitasi kolaborasi dan manajemen tugas.
-4. **MySQL**: Database yang handal untuk menyimpan data dan mendukung fitur kolaborasi.
-5. **Dan banyak lagi**: Termasuk alat dan kerangka kerja lainnya untuk mendukung pengembangan dan pengelolaan aplikasi dengan efisien.
+- **Laravel**: Framework PHP yang kuat, menyatukan backend dan frontend secara sinergis.
+- **Tailwind CSS**: Kerangka kerja CSS yang memungkinkan desain responsif dan menarik.
+- **Flowbyte**: Platform aliran kerja yang memfasilitasi kolaborasi dan manajemen tugas.
+- **MySQL**: Database yang handal untuk menyimpan data dan mendukung fitur kolaborasi.
+- **Dan banyak lagi**: Termasuk alat dan kerangka kerja lainnya untuk mendukung pengembangan dan pengelolaan aplikasi dengan efisien.
 
 ## Fitur
 
