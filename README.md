@@ -17,12 +17,33 @@ https://github.com/unix-waltz/Laralymbr/assets/106463487/0964f79f-526a-42a2-b41d
 - **Dan banyak lagi**: Termasuk alat dan kerangka kerja lainnya untuk mendukung pengembangan dan pengelolaan aplikasi dengan efisien.
 
 ## Fitur
+**#User-Level**
+### Admin
 
-1. **Manajemen Tugas**: Laralymbr memungkinkan pengguna untuk membuat, mengedit, dan menghapus tugas.
-2. **Penugasan**: Pengguna dapat menugaskan tugas kepada pengguna lain.
-3. **Prioritas**: Tugas dapat diberi prioritas untuk membantu pengguna dalam mengatur urutan pengerjaan.
-4. **Komentar**: Fitur komentar memungkinkan pengguna untuk berkolaborasi dan berdiskusi tentang tugas.
-5. **Notifikasi**: Pengguna akan menerima notifikasi untuk tugas yang ditugaskan atau komentar baru.
+- **Manajemen Admin**: Pengguna yang memiliki hak akses untuk mengelola pengguna lain dan fungsi-fungsi sistem.
+- **Manajemen Pengguna & petugas**: Kemampuan untuk menambahkan, mengedit, dan menghapus pengguna lain dalam sistem.
+- **Manajemen Buku**: Pengelolaan daftar buku, termasuk menambah, mengedit, dan menghapus buku.
+- **Manajemen Genre/category**: Kemampuan untuk menambah, mengedit, dan menghapus kategori atau genre buku.
+- **Dashboard Administrasi**: Tampilan widget UI yang menampilkan data secara keseluruhan tentang pengguna, buku, dan aktivitas lainnya dalam sistem.
+- **Generate Laporan**: Fasilitas untuk menghasilkan laporan dalam format EXCEL, CSV, HTML, dan PDF untuk analisis dan dokumentasi.
+- **Manajemen Peminjaman**: Kemampuan untuk menangani proses penerimaan dan peminjaman buku kepada pengguna.
+
+### Petugas
+- **Manajemen Buku**: Pengelolaan daftar buku, termasuk menambah, mengedit, dan menghapus buku.
+- **Manajemen Genre/category**: Kemampuan untuk menambah, mengedit, dan menghapus kategori atau genre buku.
+- **Dashboard Administrasi**: Tampilan widget UI yang menampilkan data secara keseluruhan tentang pengguna, buku, dan aktivitas lainnya dalam sistem.
+- **Manajemen Peminjaman**: Kemampuan untuk menangani proses penerimaan dan peminjaman buku kepada pengguna.
+- **Generate Laporan**: Fasilitas untuk menghasilkan laporan dalam format EXCEL, CSV, HTML, dan PDF tentang aktivitas peminjaman buku.
+
+### Peminjam / Pembaca
+
+- **Pencarian Buku**: Fitur pencarian untuk menemukan buku yang diinginkan.
+- **Rating dan Ulasan**: Kemampuan untuk memberikan rating dan ulasan terhadap buku yang sudah dibaca.
+- **koleksi**: Fitur untuk menyimpan daftar buku yang diminati atau ingin dibaca di masa mendatang.
+- **Riwayat Peminjaman**: Melihat riwayat peminjaman buku mereka sendiri.
+- **Registrasi**: Kemampuan untuk mendaftar sebagai pengguna dan mendapatkan hak akses sebagai peminjam dalam sistem.
+- **Report dan Feedback**: Kemampuan untuk melaporkan kendala sebagai peminjam dalam sistem.
+
 
 ## Diagram ERD (Entity-Relationship Diagram)
 
