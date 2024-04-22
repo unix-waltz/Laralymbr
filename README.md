@@ -4,6 +4,8 @@
 <img src="https://github.com/unix-waltz/Laralymbr/assets/106463487/ffe063a2-bf5d-42d7-9a12-02a0b2289032" alt="Screenshot" style="width:100%;">
 
 Laralymbr adalah aplikasi peminjaman buku berbasis web yang dibangun dengan menggunakan framework Laravel. Aplikasi ini dirancang untuk membantu pengguna secara efisien.
+# Preview
+https://github.com/unix-waltz/Laralymbr/assets/106463487/0964f79f-526a-42a2-b41d-fc0960081647
 
 
 ## Fitur
