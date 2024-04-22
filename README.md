@@ -16,7 +16,7 @@ Laralymbr adalah aplikasi peminjaman buku berbasis web yang dibangun dengan meng
 
 ## Diagram ERD (Entity-Relationship Diagram)
 
-** ## Revisi Diagram ERD (Entity-Relationship Diagram) **
+**#Revisi Diagram ERD (Entity-Relationship Diagram)**
 
 Setelah melakukan evaluasi mendalam terhadap kebutuhan aplikasi, ERD (Entity-Relationship Diagram) kami telah direvisi untuk meningkatkan efisiensi dan skalabilitas. Revisi ini mengintegrasikan peningkatan fungsionalitas dan memperbaiki struktur basis data untuk mendukung pertumbuhan masa depan. Berikut adalah penjelasan tentang perubahan yang telah dilakukan:
 
