@@ -92,7 +92,7 @@ Revisi ini bertujuan untuk menciptakan struktur basis data yang lebih fleksibel,
 
 ## Instalasi
 
-1. **Prasyarat**: Pastikan Anda memiliki PHP, Composer, dan MySQL terinstal di komputer Anda.
+1. **Prasyarat**: Pastikan Anda memiliki PHP, Composer, dan MySQL terinstal di komputer Anda dengan versi yg memadai (Disarankan Untuk Mengunakan versi yang paling baru).
 2. **Clone Repositori**: `git clone https://github.com/unix-waltz/Laralymbr.git`
 3. **Install Dependencies**: `composer install`
 4. **Setup Database**: 
