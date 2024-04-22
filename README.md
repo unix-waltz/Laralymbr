@@ -1,7 +1,6 @@
 ![readmebox](https://github.com/porn-codex/Java79/assets/106463487/c7327c43-75d7-4e9b-b818-b96648559d97)
 # Laralymbr
  
-<img src="https://github.com/unix-waltz/Laralymbr/assets/106463487/bd24b4b6-9df1-4e51-a2fd-7a0c67f558bd" alt="Screenshot" style="width:100%;">
 <img src="https://github.com/unix-waltz/Laralymbr/assets/106463487/ffe063a2-bf5d-42d7-9a12-02a0b2289032" alt="Screenshot" style="width:100%;">
 
 Laralymbr adalah aplikasi peminjaman buku berbasis web yang dibangun dengan menggunakan framework Laravel. Aplikasi ini dirancang untuk membantu pengguna secara efisien.
