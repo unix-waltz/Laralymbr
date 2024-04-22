@@ -12,7 +12,38 @@ Laralymbr adalah aplikasi peminjaman buku berbasis web yang dibangun dengan meng
 
 ## Diagram ERD (Entity-Relationship Diagram)
 
-![ERD Diagram](link_gambar_ERD)
+## Revisi Diagram ERD (Entity-Relationship Diagram)
+
+Setelah melakukan evaluasi mendalam terhadap kebutuhan aplikasi, ERD (Entity-Relationship Diagram) kami telah direvisi untuk meningkatkan efisiensi dan skalabilitas. Revisi ini mengintegrasikan peningkatan fungsionalitas dan memperbaiki struktur basis data untuk mendukung pertumbuhan masa depan. Berikut adalah penjelasan tentang perubahan yang telah dilakukan:
+
+1. **Normalisasi Basis Data**
+
+   Kami melakukan normalisasi basis data untuk mengurangi redundansi dan meningkatkan integritas data. Setiap tabel dirancang untuk menyimpan informasi yang berkaitan dengan entitas tunggal, memastikan struktur yang lebih bersih dan lebih efisien.
+
+2. **Penyesuaian Relasi Antara Tabel**
+
+   Kami menyempurnakan relasi antara tabel-tabel dalam basis data untuk memastikan keterkaitan yang tepat dan efektif antara entitas. Ini membantu mempermudah proses kueri dan manipulasi data, serta meningkatkan konsistensi dan keamanan.
+
+3. **Pengenalan Indeks dan Kunci Asing**
+
+   Untuk meningkatkan kinerja kueri dan menjaga konsistensi data, kami menambahkan indeks dan kunci asing yang sesuai. Ini mempercepat pencarian data dan memastikan integritas referensial antara entitas.
+
+4. **Penambahan Entitas Tambahan**
+
+   Sebagai tanggapan terhadap kebutuhan baru, kami memperkenalkan entitas tambahan untuk mendukung fungsionalitas yang lebih kompleks. Ini termasuk entitas untuk manajemen pengguna, hak akses, dan log aktivitas.
+
+5. **Integrasi Fitur-fitur Baru**
+
+   Dalam rangka meningkatkan kemampuan aplikasi, ERD telah diperluas untuk mencakup tabel-tabel yang mendukung fitur-fitur baru seperti notifikasi real-time, integrasi eksternal, dan analisis data.
+
+Revisi ini bertujuan untuk menciptakan struktur basis data yang lebih fleksibel, skalabel, dan mudah dipelihara. Dengan demikian, kami berharap aplikasi dapat berkembang dengan baik seiring waktu dan memenuhi kebutuhan pengguna dengan lebih baik.
+
+**Sebelum :**
+![image](https://github.com/unix-waltz/Laralymbr/assets/106463487/a2ebde4b-fb3f-4244-b793-ff9cb9b805e8)
+
+**Sesudah :**
+![Screenshot from 2024-04-22 17-23-31](https://github.com/unix-waltz/Laralymbr/assets/106463487/024f1486-95b1-41f9-bd6c-d306b81ebfc6)
+
 
 ## Diagram UML (Unified Modeling Language)
 
