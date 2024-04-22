@@ -101,8 +101,9 @@ Revisi ini bertujuan untuk menciptakan struktur basis data yang lebih fleksibel,
     - Tambahkan :`ADMIN_USERNAME=''
                   ADMIN_EMAIL=''
                   ADMIN_PASSWORD=''`
-    -Jalankan : `php artisan storage:link`
+    
     - Jalankan migrasi: `php artisan migrate --seed`/`php artisan migrate:fresh --seed`
+    - Jalankan : `php artisan storage:link`
 6. **Mulai Server**: `php artisan serve`
 7. **Akses Aplikasi**: Buka browser dan kunjungi `http://localhost:8000`.
 
