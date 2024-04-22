@@ -1,6 +1,7 @@
 ![readmebox](https://github.com/porn-codex/Java79/assets/106463487/c7327c43-75d7-4e9b-b818-b96648559d97)
-# Laralymbr
+# Laralymbr ![Screenshot from 2024-04-22 20-26-04](https://github.com/unix-waltz/Laralymbr/assets/106463487/bd24b4b6-9df1-4e51-a2fd-7a0c67f558bd)
 Laralymbr adalah aplikasi peminjaman buku berbasis web yang dibangun dengan menggunakan framework Laravel. Aplikasi ini dirancang untuk membantu pengguna secara efisien.
+
 
 ## Fitur
 
@@ -39,9 +40,11 @@ Setelah melakukan evaluasi mendalam terhadap kebutuhan aplikasi, ERD (Entity-Rel
 Revisi ini bertujuan untuk menciptakan struktur basis data yang lebih fleksibel, skalabel, dan mudah dipelihara. Dengan demikian, kami berharap aplikasi dapat berkembang dengan baik seiring waktu dan memenuhi kebutuhan pengguna dengan lebih baik.
 
 **Sebelum :**
+##
 ![image](https://github.com/unix-waltz/Laralymbr/assets/106463487/a2ebde4b-fb3f-4244-b793-ff9cb9b805e8)
 
 **Sesudah :**
+##
 ![Screenshot from 2024-04-22 17-23-31](https://github.com/unix-waltz/Laralymbr/assets/106463487/024f1486-95b1-41f9-bd6c-d306b81ebfc6)
 
 
