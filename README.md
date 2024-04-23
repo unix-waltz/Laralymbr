@@ -45,9 +45,10 @@ https://github.com/unix-waltz/Laralymbr/assets/106463487/0964f79f-526a-42a2-b41d
 - **Report dan Feedback**: Kemampuan untuk melaporkan kendala sebagai peminjam dalam sistem.
 
 
-## Diagram ERD (Entity-Relationship Diagram)
+## D![erd](https://github.com/unix-waltz/Laralymbr/assets/106463487/da426675-db14-49f6-9b74-46451c879535)
+iagram ERD (Entity-Relationship Diagram)
 
-**#Revisi Diagram ERD (Entity-Relationship Diagram)**
+**#Revisi Diagram Relasi**
 
 Setelah melakukan evaluasi mendalam terhadap kebutuhan aplikasi, ERD (Entity-Relationship Diagram) kami telah direvisi untuk meningkatkan efisiensi dan skalabilitas. Revisi ini mengintegrasikan peningkatan fungsionalitas dan memperbaiki struktur basis data untuk mendukung pertumbuhan masa depan. Berikut adalah penjelasan tentang perubahan yang telah dilakukan:
 
